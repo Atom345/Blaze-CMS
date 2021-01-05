@@ -1,10 +1,8 @@
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://cdn.discordapp.com/attachments/696883408168681482/793637431127703602/phoenix_1.png">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://phoenix.ltda">
+    <img src="https://cdn.discordapp.com/attachments/696883408168681482/793637431127703602/phoenix_1.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Phoenix PHP</h3>
@@ -22,8 +20,6 @@
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
   </p>
 </p>
-
-<h3><b>Please note:</b> Phoenix has not been officially released at this time. v1.0.0 is expected to release 2 weeks after posting this respository.</h3>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -116,8 +112,3 @@ Email - admin@phoenix.ltda
 Website - https://phoenix.ltda/contact
 <br>
 Project Link: - https://github.com/Atom345/Phoenix-PHP
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
