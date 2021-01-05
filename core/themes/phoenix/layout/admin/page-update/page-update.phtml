@@ -1,0 +1,119 @@
+<div class="main-content" id="panel">
+    <?php display_notifications(); ?>
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+    <div class = "card">
+         <div class = "card-body">
+            <form action="" method="post" role="form">
+                <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" name="title" class="form-control" value="<?= $data->page->title ?>" />
+							<small class = "text-muted">The title of your custom page.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Position</label>
+                            <select class="form-control" name="position">
+                                <option value="bottom" <?= $data->page->position == 'bottom' ? 'selected="true"' : null ?>>Bottom</option>
+                                <option value="top" <?= $data->page->position == 'top' ? 'selected="true"' : null ?>>Top</option>
+                                <option value="hidden" <?= $data->page->position == 'hidden' ? 'selected="true"' : null ?>>Hidden</option>
+                            </select>
+							<small class = "text-muted">The position of your page.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label id="url_label">URL Slug</label>
+                            <input type="text" name="url" class="form-control" value="<?= $data->page->url ?>" />
+							<small class = "text-muted">The slug of your URL (e.g /my-page).</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select class="form-control" name="type">
+                                <option value="internal" <?= $data->page->type == 'internal' ? 'selected="true"' : null ?>>Internal</option>
+                                <option value="external" <?= $data->page->type == 'external' ? 'selected="true"' : null ?>>External</option>
+                            </select>
+							<small class = "text-muted">The target of your page.</small>
+                        </div>
+                    </div>
+					
+					<div class="col-md-6">
+                        <div class="form-group">
+                            <label>Permissions</label>
+                            <select class="form-control" name="permissions">
+                                <option value="internal" <?= $data->page->permissions == '1' ? 'selected="true"' : null ?>>Admin</option>
+                                <option value="external" <?= $data->page->permissions == '0' ? 'selected="true"' : null ?>>User</option>
+                            </select>
+							<small class = "text-muted">The permissions required to view the page.</small>
+                        </div>
+                    </div>
+
+                    <div id="description_container" class="col-12">
+                        <div class="form-group">
+                            <textarea id="description" name="description" class="form-control form-control-lg"><?= $data->page->description ?></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+         </div>   
+    </div>
+</div>
+</div>   
+  
+<?php ob_start() ?>
+    <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/tinymce/tinymce.min.js') ?>"></script>
+    <script>
+        tinymce.init({
+            selector: '#description',
+            plugins: 'code preview fullpage autolink directionality visualblocks visualchars fullscreen image link media codesample table hr pagebreak nonbreaking toc advlist lists imagetools',
+            toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent | removeformat code',
+            height : "480"
+        });
+
+        $('[name="type"]').on('change', (event) => {
+
+            let selectedOption = $(event.currentTarget).find(':selected').attr('value');
+
+            switch(selectedOption) {
+
+                case 'internal':
+
+                    $('#url_label').html(<?= json_encode("internal") ?>);
+                    $('#description_container').show();
+
+                    break;
+
+                case 'external':
+
+                    $('#url_label').html(<?= json_encode("external") ?>);
+                    $('#description_container').hide();
+
+                    break;
+            }
+
+        });
+    </script>
+<?php \Phoenix\Event::add_content(ob_get_clean(), 'javascript') ?>

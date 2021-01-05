@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-primary static">
+    <a class="navbar-brand" href="<?php echo url() ?>"><?php echo $this->settings->title ?></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <?php if(\Phoenix\Middlewares\Authentication::check()): ?>
+        <?php if($this->settings->cms_and_posting == 1){ ?>
+        <li class="nav-item"><a class="nav-link" href="<?php echo url('newsfeed') ?>">Feed</a></li>
+        <?php } ?>
+        <?php endif; ?>
+        <?php foreach($data->pages as $data): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $data->url ?>" target="<?= $data->target ?>"><?= $data->title ?></a>
+        </li>
+        <?php endforeach ?>
+        </ul>
+        <span class="navbar-text">
+			<?php if(\Phoenix\Middlewares\Authentication::check()): ?>
+				<div class="dropdown dropleft d-inline">
+                      <button class="btn btn-invert no-shadow dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $this->user->username ?>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item has-icon" href="<?php echo url('dashboard') ?>"><i class="fas fa-columns"></i> <?php lang('dashboard') ?></a>
+                        <a class="dropdown-item has-icon" href="<?php echo url('account') ?>"><i class="fas fa-cog"></i> <?php lang('account_settings') ?></a>
+						 <?php if(\Phoenix\Middlewares\Authentication::is_admin()): ?>
+            			 <div class="dropdown-divider"></div>
+						 <a class="dropdown-item has-icon" href="<?php echo url('admin/') ?>"><i class="fas fa-key"></i> <?php lang('admin_panel') ?></a>
+						   <div class="dropdown-divider"></div>
+						 <?php endif ?>
+                        <a class="dropdown-item has-icon" href="<?php echo url('logout') ?>"><i class="fas fa-sign-out-alt"></i> <?php lang('logout') ?></a>
+                      </div>
+                    </div>
+    		<?php else: ?>
+			<ul class="navbar-nav mr-auto">
+   			<li class="nav-item">
+            	<a class="nav-link" href="<?php echo url('login') ?>"><?php lang('login') ?></a>
+        	</li>
+			 <?php if($this->settings->register_is_enabled == 1): ?>
+			<li class="nav-item">
+            	<a class="nav-link" href="<?php echo url('register') ?>"><?php lang('register') ?></a>
+        	</li>
+			<?php endif ?>
+        	</ul>
+        <?php endif ?>
+    
+        </span>
+    </div>
+</nav>

@@ -1,0 +1,172 @@
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+      </nav>
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+          </div>
+		 <?php if($data->latest_version == true and $data->update_package == true and $data->active_api_key == true){ ?>
+		  <div class="alert alert-dark">
+			 <div class = "row">
+		     <div class = "col-11">
+             <div class = "ml-auto" style = "margin:5px"><i class = "fas fa-cloud-download-alt"></i> <b>Update Found!</b> Phoenix version <b><?php echo $data->latest_version ?></b> is now available.</div>
+		     </div>
+			 <div class = "col-1">
+				 <form method = "post">
+				 <button type = "submit" name = "update_now" class="btn btn-sm btn-dark float-right" style = "box-shadow:none;background:#222426;">Update Now</button>
+				 </form>
+			 </div>
+			 </div>
+           </div>
+		 <?php } ?>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-purple">
+                  <i class="fas fa-user" style = "margin-top:25px"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Users</h4>
+                  </div>
+                  <div class="card-body">
+                   <?php echo $data->users->active_users ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                  <i class="fas fa-user-clock" style = "margin-top:25px"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>online Users</h4>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $data->users->active_users_month ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-warning">
+                  <i class="fas fa-bug" style = "margin-top:25px"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Bugs Found</h4>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $data->bugs_num ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-download" style = "margin-top:25px"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Phoenix Version</h4>
+                  </div>
+                  <div class="card-body">
+                    <?php echo $this->settings->version ?>
+                  </div>
+                </div>
+              </div>
+            </div> 
+			  <div class = "row">
+			 <div class = "col-md-6">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h4>Phoenix News</h4>
+                  </div>
+                  <div class="card-body">
+					 <?php 
+					  $news = file_get_contents("https://phoenix.ltda/news/news.txt");
+					  echo $news;
+					  ?>
+                  </div>
+                </div>
+			  </div>
+				  
+			  <div class = "col-md-6">
+                <div class="card card-success">
+                  <div class="card-header">
+                    <h4>Live Server Stats</h4>
+                  </div>
+                  <div class="card-body">
+					 Server CPU Usage: %<h3 id = "cpu"> </h3>
+					<br>
+                    Server Memory Usage: %<h3 id = "memory"> </h3>
+                  </div>
+                </div>
+			  </div>
+		    </div>
+			  <div class = "row">
+				  <div class = "col-md-6">
+				  <div class="card card-info">
+                  <div class="card-header">
+                    <h4>Invite our Discord Bot</h4>
+                  </div>
+                  <div class="card-body">
+					<p>If you own a Discord server, you shoudl consider inviting our bot. Our bot allows you to interact with the Phoenix API and your Phoenix website directly from your Discord server.</p>
+					  <br>
+					  <button class = "btn btn-info" href = "#">Invite Bot</button>
+                  </div>
+                </div>
+			   </div>
+				  <div class = "col-md-6">
+			    <div class="card card-secondary">
+                  <div class="card-header">
+                    <h4>API Key</h4>
+                  </div>
+                  <div class="card-body">
+					<p>Please be sure to obtain an API key from the official Phoenix website. With an API key you will receieve auto updates, have access to our store, and recieve helpful support.</p>
+                  </div>
+                </div>
+				  </div>
+			  </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+<?php ob_start() ?>
+<script>
+$( document ).ready(function() {
+   requestData();
+});
+	function requestData(){
+
+			$.ajax({
+				url: '<?php echo REQUEST_PATH . 'Server.php' ?>', 
+				type: 'GET',
+				dataType: "json",
+				success: function(data) {
+					
+					JSON.stringify(data);
+					console.log(data);
+					document.getElementById("cpu").innerHTML = data.cpu;
+					document.getElementById("memory").innerHTML = data.memory;
+					
+					setTimeout(requestData, 1000);	
+				},
+				error: function (xhr) {
+				var err = JSON.parse(xhr.responseText);
+				alert(err.message);
+				},
+				cache: false
+			});
+	}	
+</script>
+<?php \Phoenix\Event::add_content(ob_get_clean(), 'javascript') ?>

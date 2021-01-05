@@ -1,0 +1,121 @@
+<div id="app">
+	<?php display_notifications() ?>
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+      </nav>
+ 
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <div class="section-header-back">
+              <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <h1>General Settings</h1>
+           
+          </div>
+
+          <div class="section-body">
+            <h2 class="section-title">All About General Settings</h2>
+            <p class="section-lead">
+              Here you can manage the general information of your site, such as website title, description, and language.
+            </p>
+			  
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-body">
+                  <form action="" method="post" role="form" enctype="multipart/form-data">
+                    <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+                    <div class="row">
+					  <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Phoenix API Key</label>
+                          <input type="text" class="form-control" name = "title" value = "<?= $this->settings->api_key ?>">
+						  <small class="text-muted">To get a Phoenix API key visit <a href = "https://phoenix.ltda/api">our website</a>. An API key allows you to access our store, recieve updates, and have access to bug tracking. You can call our API 5000 times a day.</small>
+                        </div>
+						  <hr>
+                      </div>				 
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Website Title</label>
+                          <input type="text" class="form-control" name = "title" value = "<?= $this->settings->title ?>">
+						  <small class="text-muted">Your website title. This will appear on search engines and in the tab.</small>
+                        </div>
+                      </div>
+					  <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Website Description</label>
+                          <input type="text" class="form-control" name = "desc" value = "<?= $this->settings->desc ?>">
+						  <small class="text-muted">Your website description. This will show up on most search engines.</small>
+                        </div>
+                      </div>
+					  <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Website Language</label>
+                          <input type="text" class="form-control" name = "default_language" value = "<?= $this->settings->default_language ?>">
+						  <small class="text-muted">This is the default language of the website.</small>
+                        </div>
+                      </div>
+					  <div class="col-md-12">
+                        <div class="form-group">
+						<label class="bmd-label-floating">Email Confirmation</label>
+                         <select class = "custom-select list" name="email_confirmation">
+                                    <option value="1" <?= $this->settings->email_confirmation ? 'selected' : null ?>>Enabled</option>
+                                    <option value="0" <?= !$this->settings->email_confirmation ? 'selected' : null ?>>Disabled</option>
+                          </select>
+						  <small class="text-muted">Require users to verify their email when they sign up.</small>
+                        </div>
+                      </div>
+					  <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Website Registration</label>
+                           <select class="custom-select" name="register_is_enabled">
+                                    <option value="1" <?= $this->settings->register_is_enabled ? 'selected' : null ?>>Enabled</option>
+                                    <option value="0" <?= !$this->settings->register_is_enabled ? 'selected' : null ?>>Disabled</option>
+                            </select>
+							<small class="text-muted">Enable or disable user registration.</small>
+                        </div>
+                      </div>
+					  <div class="col-md-12">
+                        <div class="form-group">
+						<label class="bmd-label-floating">Website Timezone</label>
+							<select class = "custom-select" name="time_zone">
+                                    <?php foreach(DateTimeZone::listIdentifiers() as $time_zone) echo '<option value="' . $time_zone . '" ' . (($this->settings->time_zone == $time_zone) ? 'selected' : null) . '>' . $time_zone . '</option>' ?>
+                             </select>
+							<small class="text-muted">This will be the timezone for your website.</small>
+                        </div>
+                      </div>
+                       <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Custom Index URL</label>
+                          <input type="text" class="form-control" name = "index_url" value = "<?= $this->settings->index_url ?>">
+						   <small class="text-muted">Use this if you have a custom index page or website you wish to use.</small>
+                        </div>
+                      </div>
+					  <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Terms and Conditions URL</label>
+                          <input type="text" class="form-control" name = "terms_and_conditions_url" value = "<?= $this->settings->terms_and_conditions_url ?>">
+						   <small class="text-muted">Use this if you have a custom terms of conditions page you would like to use.</small>
+                        </div>
+                      </div>
+					  <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Privacy Policy URL</label>
+                          <input type="text" class="form-control" name = "privacy_policy_url" value = "<?= $this->settings->privacy_policy_url ?>">
+						   <small class="text-muted">Use this if you have a custom privacy policy page you would like to use.</small>
+                        </div>
+                      </div>
+                     
+                    </div>
+                    <button type="submit" name = "submit" class="btn btn-primary">Save</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+  		    </div>
+    </div>
+  </div>

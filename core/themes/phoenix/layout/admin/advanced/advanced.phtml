@@ -1,0 +1,130 @@
+<div id="app">
+   <?php display_notifications() ?>
+   <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar"></nav>
+      <!-- Main Content -->
+      <div class="main-content">
+         <section class="section">
+            <div class="section-header">
+               <div class="section-header-back">
+                  <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+               </div>
+               <h1>Advanced Settings</h1>
+            </div>
+            <div class="section-body">
+               <h2 class="section-title">All About Advanced Settings</h2>
+               <p class="section-lead">
+                  Here you can manage the advanced aspects of your website, such as email and SMTP details.
+               </p>
+            </div>
+         </section>
+		   <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-body">
+                  <form action="" method="post" role="form" enctype="multipart/form-data">
+                    <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+                    <div class="row">
+                      <div class = "col-md-12">
+                            <div class="form-group">
+                                <label>SMTP Host</label>
+                                <input type="text" name="smtp_host" class="form-control" value="<?= $this->settings->smtp->host ?>" />
+                                <small class="form-text text-muted">The hostname of you SMTP. You can get this from your hosting provider.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>SMTP From</label>
+                                <input type="text" name="smtp_from" class="form-control" value="<?= $this->settings->smtp->from ?>" />
+                                <small class="form-text text-muted">From</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>SMTP Encryption</label>
+                                <select name="smtp_encryption" class="custom-select form-control">
+                                    <option value="0" <?= $this->settings->smtp->encryption == '0' ? 'selected' : null ?>>None</option>
+                                    <option value="ssl" <?= $this->settings->smtp->encryption == 'ssl' ? 'selected' : null ?>>SSL</option>
+                                    <option value="tls" <?= $this->settings->smtp->encryption == 'tls' ? 'selected' : null ?>>TLS</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>SMTP Port</label>
+                                <input type="text" name="smtp_port" class="form-control" value="<?= $this->settings->smtp->port ?>" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-check-label" style = "margin:15px">
+                                    <input class="form-check-input" name="smtp_auth" type="checkbox" value="" <?= $this->settings->smtp->auth ? 'checked' : null ?>>
+                                    <b>SMTP Auth</b>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>SMTP Username</label>
+                                <input type="text" name="smtp_username" class="form-control" value="<?= $this->settings->smtp->username ?>" <?= ($this->settings->smtp->auth) ? null : 'disabled' ?>/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>SMTP Password</label>
+                                <input type="text" name="smtp_password" class="form-control" value="<?= $this->settings->smtp->password ?>" <?= ($this->settings->smtp->auth) ? null : 'disabled' ?>/>
+                            </div>
+                      
+                           
+                     
+						<button type="submit" name = "submit" class="btn btn-primary">Save</button>
+                    <div class="clearfix"></div>
+                </div>
+				</div>
+				</div>
+              </div>
+                <div class="card">
+                <div class="card-body">
+                  <form action="" method="post" role="form" enctype="multipart/form-data">
+                    <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+                    <div class="row">
+                      <div class = "col-md-12">
+                        
+                        <div class="form-group">
+                                <label>Emails</label>
+                                <textarea class="form-control" name="email_notifications_emails" rows="5"><?= $this->settings->email_notifications->emails ?></textarea>
+                                <small class="form-text text-muted">The emails you wish to use, that will recieve website notifications. Seperate multiple emails with a ','</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-check-label" style = "margin:15px">
+                                    <input type="checkbox" class="form-check-input" name="email_notifications_new_user" <?= $this->settings->email_notifications->new_user ? 'checked' : null?>>
+                                    New User
+                                </label>
+
+                                <small class="form-text text-muted">Receieve a email when a new user registers.</small>
+                            </div>
+                        
+                     </div>
+                    </div>
+                    <button type="submit" name = "submit" class="btn btn-primary">Save</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+   </div>
+</div>
+<?php ob_start() ?>
+<script>
+    $(document).ready(() => {
+
+        $('input[name="smtp_auth"]').on('change', (event) => {
+
+            if($(event.currentTarget).is(':checked')) {
+                $('input[name="smtp_username"],input[name="smtp_password"]').removeAttr('disabled');
+            } else {
+                $('input[name="smtp_username"],input[name="smtp_password"]').attr('disabled', 'true');
+            }
+
+        })
+    })
+</script>
+<?php \Phoenix\Event::add_content(ob_get_clean(), 'javascript') ?>

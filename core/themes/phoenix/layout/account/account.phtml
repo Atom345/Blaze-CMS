@@ -1,0 +1,67 @@
+<section class="container">
+
+    <?php display_notifications() ?>
+
+
+<div class = "card" style = "margin:80px">
+    <div class = "card-body">
+         <div class = "row">
+        <div class = "col-md-9">
+        <div class = "card-title"><h2><?php lang('your_account') ?></h2></div>
+        </div>
+        <div class = "col-md-3">
+         <a href="<?= url('account-details') ?>" class="btn btn-primary pull-right"><i class="fas fa-book"></i> <?php lang('account_logs') ?></a>
+         </div>
+         </div>
+        <form action="" method="post" role="form" class="margin-top-3">
+        <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+        
+        <div class="form-group">
+            <label for="name"><?php lang('username') ?></label>
+            <input type="text" id="name" name="name" class="form-control" style = "width:600px" value="<?= $this->user->username ?>" />
+        </div>
+
+        <div class="form-group">
+            <label for="email"><?php lang('email') ?></label>
+            <input type="text" id="email" name="email" class="form-control" style = "width:600px" value="<?= $this->user->email ?>" />
+        </div>
+
+        <div class="margin-top-6"></div>
+
+        <h2><?php lang('change_password') ?></h2>
+        <p class="text-muted"><?php lang('change_password_sub') ?></p>
+
+        <div>
+            <div class="form-group">
+                <label for="old_password"><?php lang('current_password') ?></label>
+                <input type="password" id="old_password" name="old_password" style = "width:600px" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="new_password"><?php lang('new_password') ?></label>
+                <input type="password" id="new_password" name="new_password" style = "width:600px" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="repeat_password"><?php lang('new_password') ?></label>
+                <input type="password" id="repeat_password" name="repeat_password" style = "width:600px" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary"><?php lang('save') ?></button>
+            </div>
+        </div>
+    </form>
+
+    <div class="margin-top-6 d-flex justify-content-between align-items-center">
+        <div>
+            <h2><?php lang('delete_account') ?></h2>
+            <p class="text-muted"><?php lang('delete_account_sub') ?></p>
+        </div>
+
+        <a href="<?= url('account/delete' . \Phoenix\Middlewares\Csrf::get_url_query()) ?>" class="btn btn-danger" data-confirm="Delete"><i class = "fas fa-trash"></i> <?php lang('delete') ?></a>
+    </div>
+
+</div>
+
+

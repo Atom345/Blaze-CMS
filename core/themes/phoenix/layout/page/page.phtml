@@ -1,0 +1,21 @@
+<div class = "container">   
+<div class = "card" style = "margin:80px">
+       <div class = "card-body">
+           <div class = "row">
+            <div class = "col-md-10">
+            <div class = "card-title"><h1><b><?= $data->page->title ?></b></h1></div>
+            </div>
+            <div class = "col-md-2">
+            <?php if(\Phoenix\Middlewares\Authentication::is_admin()): ?>
+                <?= get_admin_options_button('page', $data->page->page_id) ?>
+            <?php endif ?>
+            </div>
+           </div>
+
+            <?= $data->page->description ?>
+        </div>
+        <div class = "card-footer">
+            <small class = "text-muted">Views: <b><?php echo $data->page->total_veiws ?></b></small>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div id="app">
+    <?php display_notifications() ?>
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar"></nav>
+        <!-- Main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-header-back">
+                        <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <h1>Edit User</h1>
+                </div>
+                <div class="section-body">
+                    <h2 class="section-title">All About editing users</h2>
+                    <p class="section-lead">
+                        Here you can manage and edit users and their details.
+                    </p>
+                </div>
+            </section>
+          <div class = "card">
+<div class="card-header card-header-primary">
+<div class = "card-title"><h4>Edit user</h4></div> 
+</div>
+<div class = "card-body">
+<?php display_notifications() ?>
+<div class = "row">
+    <div class = "col-md-12">
+    <div class = "pull-right">
+    <?= get_admin_options_button('user', $data->user->user_id) ?>
+    </div>
+</div>
+</div>
+<form action="" method="post" role="form" enctype="multipart/form-data">
+    <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+    <div class = "row">
+    <div class ="col-md-8">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="username" class="form-control" value="<?= $data->user->username ?>" />
+        <small class="text-muted">The users username.</small>
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="email" class="form-control" value="<?= $data->user->email ?>" />
+        <small class="text-muted">The users email.</small>
+    </div>
+
+<div class="form-group">
+    <label>Account Status</label>
+
+    <select class="custom-select" name="status">
+        <option value="1" <?php if($data->user->active == 1) echo 'selected' ?>>Active</option>
+        <option value="0" <?php if($data->user->active == 0) echo 'selected' ?>>Disabled</option>
+    </select>
+    <small class="text-muted">Turn the users account on or off.</small>
+</div>
+
+<div class="form-group">
+    <label>Type</label>
+
+    <select class="custom-select" name="type">
+        <option value="1" <?php if($data->user->type == 1) echo 'selected' ?>>Admin</option>
+        <option value="0" <?php if($data->user->type == 0) echo 'selected' ?>>User</option>
+    </select>
+
+    <small class="text-muted">This is the user permissions. Please be careful when giving out admin priveleges.</small>
+</div>
+
+<h2 class="mt-5">Change Password</h2>
+<p class="text-muted">Change the users password.</p>
+
+<div class="form-group">
+    <label>New Password</label>
+    <input type="password" name="new_password" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label>Repeat Password</label>
+    <input type="password" name="repeat_password" class="form-control" />
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" name="submit" class="btn btn-primary">Save</button>
+</div>
+</div>  
+</div>
+</form>
+</div>
+</div>  
+        </div>
+    </div>
+</div>

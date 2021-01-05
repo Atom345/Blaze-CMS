@@ -1,0 +1,81 @@
+<?php display_notifications(); ?>
+<div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+      </nav>
+ 
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <div class="section-header-back">
+              <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <h1>API & Store</h1>
+           
+          </div>
+
+          <div class="section-body">
+            <h2 class="section-title">All about API & Store</h2>
+            <p class="section-lead">
+             Here you can download plugins and theme on the Phoenix Store as well as manage API deatils on your website
+            </p>
+			  
+		</div>
+			<form method = "post">
+			<div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-search"></i>
+                          </div>
+                        </div>
+						 
+                        <input type="text" style = "width:500px" class="form-control" name = "search_content" placeholder = "Search the Phoenix store..." autofocus>
+						
+							<button type = "submit" style = "margin-left:10px" class = "btn btn-primary" name = "search_store">Search</button>  
+                      </div>
+                    </div>
+				</form>
+				
+			
+				<div class = "row">
+			   <?php
+			   if($data->store_not_found == false){			   
+			   if (is_array($data->store) and isset($data->store)){
+			   foreach($data->store as $item) { 
+				   	$item_info = $item['id'] . ',' . $item['name'] . ',' . $item['type'] . ',' . $item['description'];
+				   ?>
+					
+					<div class = "col-md-6">
+				    <div class="card card-primary">
+                  	<div class="card-header">
+                    <h4><?php echo $item['name'] ?></h4>
+                  	</div>
+                  	<div class="card-body">
+					<?php if($item['type'] == 'plugin'){ ?>
+					 <div class="badges">
+                      <span class="badge badge-primary">Plugin</span>
+					</div>
+					<?php }else{ ?>
+					<div class="badges">
+                      <span class="badge badge-dark">Theme</span>
+					</div>
+					<?php } ?>
+                    <p>
+					Description: <?php echo $item['description'] ?>
+					</p>
+                  	</div>
+                	</div>
+					</div>
+					
+			   <?php } ?>
+			  <?php }else{ ?>
+				   <div class = "container"><h4 class = "text-muted text-center">Hmm, looks like we are having some API issues. Please try again in a few moments. <a class = "text-primary" href = "<?php echo url('admin/store') ?>">Reload</a></h4></div>
+			  <?php } ?>
+			  <?php }else{ ?>
+
+			  <?php } ?>
+			</div>
+		 </div>
+		</div>

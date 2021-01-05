@@ -1,0 +1,104 @@
+<div id="app">
+   <?php display_notifications() ?>
+   <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar"></nav>
+      <!-- Main Content -->
+      <div class="main-content">
+         <section class="section">
+            <div class="section-header">
+               <div class="section-header-back">
+                  <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+               </div>
+               <h1>General Settings</h1>
+            </div>
+            <div class="section-body">
+               <h2 class="section-title">All About General Settings</h2>
+               <p class="section-lead">
+                  Here you can manage the general information of your site, such as website title, description, and language.
+               </p>
+            </div>
+         </section>
+		    <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Write Your Post</h4>
+                  </div>
+                  <div class="card-body">
+				  <form method = "post">
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                      <div class="col-sm-12 col-md-7">
+                        <input type="text" name = "post_title" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                      <div class="col-sm-12 col-md-7">
+                        <textarea id="post_container" name="post_content" rows="10" cols="60"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
+                      <div class="col-sm-12 col-md-7">
+                        <div id="image-preview" class="image-preview">
+                          <label for="image-upload" id="image-label">Choose File</label>
+                          <input type="file" name="image" id="image-upload" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Post Type</label>
+                      <div class="col-sm-12 col-md-7">
+                        <select class="form-control selectric" name="post_type">
+                           <option value="0">Default</option>
+                                     <option value="1">Annoucement</option>
+									 <option value="2">Warning</option>
+									 <option value="3">News</option>
+                        </select>
+                      </div>
+                    </div>
+					 <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Post Visibility</label>
+                      <div class="col-sm-12 col-md-7">
+                        <select class="form-control selectric" name="post_visibility">
+                           <option value="0">Everyone</option>
+                                    <option value="1">Only Staff</option>
+									<option value="2">Private to me</option>
+                        </select>
+                      </div>
+                    </div>
+					<div class = "form-group">
+									<div class="custom-control custom-checkbox mb-3">
+  										<input class="custom-control-input" id="comments_allow_check" name = "post_comments" type="checkbox" value = "1">
+  										<label class="custom-control-label" for="comments_allow_check">Allow Comments</label>
+									</div>
+									</div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-7">
+                        <button type = "submit" class="btn btn-primary">Create Post</button>
+                      </div>
+                    </div>
+					</form>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+   </div>
+</div>
+
+<?php ob_start() ?>
+<script src="<?= url(ASSETS_URL_PATH . 'js/libraries/tinymce/tinymce.min.js') ?>"></script>
+<script>
+ tinymce.init({
+            selector: '#post_container',
+            plugins: 'code preview autolink directionality visualblocks visualchars fullscreen image link media codesample table hr pagebreak nonbreaking toc advlist lists imagetools',
+            toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent | removeformat code',
+            height : "480"
+        });
+    
+</script>
+<?php \Phoenix\Event::add_content(ob_get_clean(), 'javascript') ?>

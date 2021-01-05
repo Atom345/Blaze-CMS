@@ -1,0 +1,107 @@
+<div class = "container">
+<?php display_notifications() ?>
+<?php
+$posts_sql = "SELECT * FROM posts ORDER BY time_posted DESC";
+	$posts_result = Phoenix\Database\Database::$database->query($posts_sql);
+	while($row = $posts_result->fetch_assoc()){
+
+switch($row['post_type']){
+	case '0':
+		$type = "
+		<div class='badges'>
+		<span class='badge badge-primary'><i class = 'fas fa-clipboard'></i> Post</span>
+		</div>
+		";
+	break;
+	case '1':
+		$type = "<span class='badge badge-info'><i class = 'fas fa-bullhorn'></i> Annoucement</span>";
+	break;
+	case '2':
+		$type = "<span class='badge badge-danger'><i class = 'fas fa-exclamation-circle'></i> Warning</span>";
+	break;
+	case '3':
+		$type = "<span class='badge badge-default'><i class = 'fas fa-newspaper'></i> News</span>";
+	break;
+}
+
+switch($row['post_visibility']){
+	case '0':
+		$view = true;
+	break;
+	case '1':
+		if($row['post_visibility'] == $this->user->type){
+			$view = true;	
+		}else{
+			$view = false;
+		}
+	break;
+	case '2':
+		if($row['user_id'] == $this->user->user_id){
+			$view = true;	
+		}else{
+			$view = false;	
+		}
+	break;
+}
+		
+?>
+
+<?php if($view == true){ ?>
+<div class = "card" style = "margin:20px;">
+	<div class = "card-body">
+		<div class = "row">
+		<div class = "col-md-10">
+			<div class = "card-title"><h1><b><?php echo $row['post_title'] ?></b></h1> <?php echo $type ?></div>
+		</div>
+		<div class = "col-md-2 text-right">
+			<?php echo get_admin_options_button('post', $row['post_id']) ?>
+		</div>
+		</div>
+		<small class = "text-muted">Posted by: <?php echo get_username_from_post($row['post_id']) ?></small>
+		<br>
+		<small class = "text-muted"><?php echo Phoenix\Time\Time::get_time_difference($row['time_posted']) ?></small>
+		<hr>
+		<div class = "card-text"><?php echo $row['post_content'] ?></div>
+		
+		</div>
+		<?php if($row['post_comments'] == 1){ ?>
+		<div class = "card-footer">
+			<?php
+			$post_id = $row['post_id'];
+			$comment_sql = "SELECT * FROM comments WHERE `post_comment_id` = ? ORDER BY time_posted DESC";	
+			$stmt = Phoenix\Database\Database::$database->prepare($comment_sql); 
+			$stmt->bind_param("s", $post_id);
+			$stmt->execute();
+			$result = $stmt->get_result();
+			while($row = $result->fetch_assoc()){
+			
+			?>
+		
+			<div class = "card">
+				<div class = "card-body">
+					<?php echo get_username_from_comment($row['comment_id']) ?>  <small class = "text-muted"><?php echo Phoenix\Time\Time::get_time_difference($row['time_posted']) ?></small>
+					<div class = "card-text"><?php echo $row['comment_content'] ?></div>
+				</div>
+			 </div>
+			
+		    <?php } ?>
+			
+			
+				<form method = "post">
+				 <div class="row">
+    				<div class="col-md-8">
+      				<div class="form-group">
+        				<input type="text" name = "comment_content" class="form-control form-control-alternative" placeholder="Share your thoughts...">
+      				</div>
+    				</div>
+				<div class = "col-md-4">
+				<button class = "btn btn-primary btn-lg" type = "submit" name = "submit_comment" value = "<?php echo $post_id ?>"><i class = "fas fa-share"></i></button>
+				</div>
+				</div>
+				</form>
+			  	</div>
+			<?php } ?>
+		</div>
+<?php } ?>
+<?php } ?>
+</div>

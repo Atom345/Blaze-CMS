@@ -1,0 +1,94 @@
+<?php
+
+switch($data->user->active){
+	case '1':
+		$active = "Active";
+	break;
+	case '0':
+		$active = "Inactive";
+	break;
+}
+
+switch($data->user->type){
+	case '1':
+		$type = "Admin";
+	break;
+	case '0':
+		$type = "User";
+	break;
+}
+?>
+
+<div id="app">
+    <?php display_notifications() ?>
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar"></nav>
+        <!-- Main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-header-back">
+                        <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <h1>User Management</h1>
+                </div>
+                <div class="section-body">
+                    <h2 class="section-title">All about user view</h2>
+                    <p class="section-lead">
+                        Here you can view existing user data.
+                    </p>
+                </div>
+            </section>
+          	      <div class="row">
+        <div class="col">
+          <div class="card">
+            <!-- Card header -->
+			<div class = "card-body">
+            <div class="card-header border-0">
+              <h3 class="mb-0"><?php echo $data->user->username ?></h3>
+            </div>
+			<div class = "row">
+				<div class = "col-md-12"><b>ID:</b> <?php echo $data->user->user_id ?></div>
+				<div class = "col-md-12"><b>Username:</b> <?php echo $data->user->username ?></div>
+				<div class = "col-md-12"><b>Email:</b> <?php echo $data->user->email ?></div>
+				<div class = "col-md-12"><b>Status:</b> <?php echo $active ?></div>
+				<div class = "col-md-12"><b>Type:</b> <?php echo $type ?></div>
+				<div class = "col-md-12"><b>IP:</b> <?php echo $data->user->ip ?></div>
+	
+	
+	<?php if($data->user_logs_result->num_rows): ?>
+				<br>
+				<br>
+ 	<div class = "col-md-12">
+	<h2 class = "text-muted">Logs</h2>
+    <div class="table-responsive">
+        <table class="table table-custom">
+            <thead class="thead-black">
+            <tr>
+                <th>Type</th>
+                <th>IP</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <?php $nr = 1; while($row = $data->user_logs_result->fetch_object()): ?>
+                <tr>
+                    <td><?= $row->type ?></td>
+                    <td><?= $row->ip ?></td>
+                </tr>
+            <?php endwhile ?>
+
+            </tbody>
+        </table>
+    </div>
+	</div>
+	<?php endif ?>
+			</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+    </div>
+</div>

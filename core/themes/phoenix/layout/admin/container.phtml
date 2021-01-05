@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><?php echo $this->settings->title ?></title>
+        <base href="<?= SITE_URL; ?>">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+        <?php if(!empty($this->settings->favicon)): ?>
+            <link href="<?= url(UPLOADS_URL_PATH . 'favicon/' . $this->settings->favicon) ?>" rel="shortcut icon" />
+        <?php endif ?>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+		  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+		  <link rel = "stylesheet" href = "<?php url(STYLES_CONFIG . '?v=' . $this->settings->version) ?>">
+		  
+        <?php foreach(['bootstrap.min.css', 'style.css', 'components.css'] as $file): ?>
+            <link href="<?= SITE_URL . ASSETS_URL_PATH ?>css/<?= $file ?>?v=<?= $this->settings->version ?>" rel="stylesheet" media="screen">
+        <?php endforeach ?>
+
+        <?= \Phoenix\Event::get_content('head') ?>
+    </head>
+
+    <body>
+	      <div class="main-sidebar sidebar-style-2">
+			  <aside id="sidebar-wrapper">
+			<?= $this->views['admin_sidebar'] ?>
+			  </aside>
+		</div>
+			<?= $this->views['content'] ?>
+
+ 
+        <?= \Phoenix\Event::get_content('modals') ?>
+
+        <input type="hidden" id="url" name="url" value="<?= url() ?>" />
+        <input type="hidden" name="global_token" value="<?= \Phoenix\Middlewares\Csrf::get('global_token') ?>" />
+		
+        <?php foreach(['libraries/popper.js', 'libraries/tooltip.js', 'libraries/bootstrap.min.js', 'libraries/jquery.nicescroll.min.js', 'libraries/moment.min.js', 'libraries/stisla.js', 'libraries/scripts.js', 'libraries/custom.js'] as $file): ?>
+            <script src="<?= SITE_URL . ASSETS_URL_PATH ?>js/<?= $file ?>?v=<?= $this->settings->version ?>"></script>
+        <?php endforeach ?>
+
+        <?= \Phoenix\Event::get_content('javascript') ?>
+
+        <script>
+        
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+      
+			
+        </script>
+    </body>
+</html>

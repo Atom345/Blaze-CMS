@@ -1,0 +1,62 @@
+<?php display_notifications() ?>
+<?php
+function test_hooks(){
+	die("Hello!");	
+}
+
+Phoenix\Hooks\Hooks::add('hook_one', 'test_hooks');
+Phoenix\Hoks\Hooks::fire('hook_one');
+
+?>
+<div class="container mt-5">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+			<br>
+            <div class="card card-primary">
+              <div class="card-header"><h4>Register</h4></div>
+              <div class="card-body">
+                <form method="POST">
+                  <div class="row">
+                    <div class="form-group col-12">
+                      <label for="frist_name">Username</label>
+                      <input id="frist_name" type="text" class="form-control" name="username" autofocus value="<?= $data->values['username'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" name="email" value="<?= $data->values['email'] ?>">
+                    <div class="invalid-feedback">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="password" class="d-block">Password</label>
+                      <input id="password" type="password" class="form-control pwstrength" type="password" <?= $data->values['password'] ?> name = "password">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="password2" class="d-block">Password Confirmation</label>
+                      <input id="password2" type="password" class="form-control" name="password-confirm">
+                    </div>
+                  </div>
+				 <?php if($this->settings->google_verify == 1){ ?>
+			  <div class="g-recaptcha" name = "g-recaptcha" data-sitekey="<?php echo $this->settings->recaptcha_public_key ?>"></div>
+			  <?php } ?>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" name="agree" class="custom-control-input" id="agree" required>
+                      <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>

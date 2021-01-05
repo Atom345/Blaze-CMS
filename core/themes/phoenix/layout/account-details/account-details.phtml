@@ -1,0 +1,44 @@
+<header class="header">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h1><?php lang('account_details') ?></h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="container">
+    <?php display_notifications() ?>
+
+    <?php if($data->logs_result->num_rows): ?>
+    <div class="margin-top-3 d-flex justify-content-between">
+        <h2><?php lang('logs') ?></h2>
+    </div>
+    <p class="text-muted"><?php lang('logs_sub') ?></p>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="text-primary">
+                    <th>
+                        <?php lang('type') ?>
+                    </th>
+                    <th>
+                        <?php lang('ip') ?>
+                    </th>
+                </thead>
+                <tbody>
+                    <?php $nr = 1; while($row = $data->logs_result->fetch_object()): ?>
+                    <tr>
+                        <td><?= $row->type ?></td>
+                        <td><?= $row->ip ?></td>
+                    </tr>
+                    <?php endwhile ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php endif ?>
+</section>

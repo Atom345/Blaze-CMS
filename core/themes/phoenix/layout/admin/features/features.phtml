@@ -1,0 +1,75 @@
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+      </nav>
+      <!-- Main Content -->
+      <div class="main-content">
+		  <?php display_notifications() ?>
+        <section class="section">
+          <div class="section-header">
+            <h1>Website Features</h1>
+          </div>
+			 <h2 class="section-title">All about website features</h2>
+            <p class="section-lead">
+              Here you can control the built-in features in Phoenix CMS.
+            </p>
+		    <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <form action="" method="post" role="form" enctype="multipart/form-data">
+                    <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />   
+                     
+                        <div class="form-group">
+                          <label class="bmd-label-floating">CMS and Posting</label>
+                           <select class="custom-select" name="cms_and_posting">
+                                    <option value="1" <?= $this->settings->cms_and_posting ? 'selected' : null ?>>Enabled</option>
+                                    <option value="0" <?= !$this->settings->cms_and_posting ? 'selected' : null ?>>Disabled</option>
+                            </select>
+							<small class="text-muted">Enable or disable Phoenix CMS. Users will be able to post and comment.</small>
+                        </div>
+                     
+                    <button type="submit" name = "submit" class="btn btn-primary">Save</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-4">
+                    <div class="card">
+                     <div class="card-body">
+                         <form action="" method="post" role="form" enctype="multipart/form-data">
+                        <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Google reCAPTCHA</label>
+                           <select class="custom-select" name="google_verify">
+                                    <option value="1" <?= $this->settings->google_verify ? 'selected' : null ?>>Enabled</option>
+                                    <option value="0" <?= !$this->settings->google_verify ? 'selected' : null ?>>Disabled</option>
+                            </select>
+							<small class="text-muted">Enable or disable Google reCAPTCHA on your website when new users register.</small>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Public Key</label>
+                          <input type="text" class="form-control" name = "recaptcha_public_key" value = "<?= $this->settings->recaptcha_public_key ?>" required>
+						  <small class="text-muted">Your public key for your recaptcha. <b>Required</b></small>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Private Key</label>
+                          <input type="text" class="form-control" name = "recaptcha_private_key" value = "<?= $this->settings->recaptcha_private_key ?>" required>
+						  <small class="text-muted">The private key for your recaptcha. <b>Required</b></small>
+                        </div>
+                        <button type="submit" name = "submit" class="btn btn-primary">Save</button>
+                        <div class="clearfix"></div>
+                        </form>
+                      </div>
+                      </div>
+                      </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>

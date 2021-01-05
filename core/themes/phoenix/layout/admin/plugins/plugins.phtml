@@ -1,0 +1,112 @@
+<div id="app">
+    <?php display_notifications() ?>
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar"></nav>
+        <!-- Main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-header-back">
+                        <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <h1>Plugin Management</h1>
+                </div>
+                <div class="section-body">
+                    <h2 class="section-title">All About plugins</h2>
+                    <p class="section-lead">
+                        Here you can manage your Phoenix website plugins.
+                    </p>
+                </div>
+            </section>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                <div class = "row">
+                    <div class = "col-md-12">
+                  <a class="btn btn-primary pull-right text-white" data-toggle="modal" data-target="#pluginModal"><i class="fas fa-plus-circle"></i> Create Plugin</a>
+                  </div>
+                </div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div class = "card">
+					<div class = "card-body">
+                  <div class="row">
+	                   <?php
+	                    foreach (get_plugins() as $plugin_path) {
+	                    if (file_exists($plugin_path . '/init.php')) {
+	                    require_once($plugin_path . '/init.php');
+	                    $plugin = str_replace(PLUGIN_PATH, '', $plugin_path);
+	                    
+	                    
+                        ?>
+						<div class = "col-md-3">
+							<div class="card" style="width: 18rem;">
+  							<div class="card-body">
+								<div class = "row">
+								<div class = "col-md-8">
+    							<h5 class="card-title"><?php echo $plugin_name ?></h5>
+								</div>
+								</div>
+    								<p class="card-text"><?php echo $plugin_desc ?></p>
+								<button class = "btn btn-link" type = "submit">Install</button>
+  							</div>
+							</div>
+	                    </div>
+	                <?php } } ?>
+					 </div>
+                   </div>
+                 </div>
+<div class="modal fade" id="pluginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-muted" id="exampleModalLabel">Generate Plugin Files</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This will generate a a basic plugin skeleton to use when creating your own plugins.
+        <br>
+        <br>
+        <form method  = "post">
+        <div class="form-group">
+        <input class = "form-control form-control-muted" placeholder = "Plugin Name" type = "text" name = "generate_plugin_name" required>
+        </div>
+        
+        <div class="form-group">
+        <input class = "form-control form-control-muted" placeholder = "Plugin Author" type = "text" name = "generate_plugin_author" required>
+        </div>
+        
+        <div class="form-group">
+        <input class = "form-control form-control-muted" placeholder = "Plugin Description" type = "text" name = "generate_plugin_desc" required>
+        </div>
+        
+        <div class="form-group">
+        <input class = "form-control form-control-muted" placeholder = "Plugin Version" type = "text" name = "generate_plugin_version" required>
+        </div>
+        
+        <div class="form-check" style = "margin:10px;">
+      <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value = "true" name = "generate_plugin_installer">
+          Use Installer (install.php & uninstall.php)
+          <span class="form-check-sign">
+              <span class="check"></span>
+          </span>
+      </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-link" name = "generate_plugin">Generate Files</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+        </div>
+    </div>

@@ -1,0 +1,66 @@
+<?php require_once THEME_CONFIG ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><?php echo $this->settings->title ?></title>
+        <base href="<?= SITE_URL; ?>" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="description" content="<?php echo $this->settings->desc ?>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <?php if(!empty($this->
+        settings->favicon)): ?>
+        <link href="<?= url(UPLOADS_URL_PATH . 'favicon/' . $this->settings->favicon) ?>" rel="shortcut icon" />
+        <?php endif ?>
+
+        <link rel="stylesheet" href="<?php url(STYLES_CONFIG . '?v=' . $this->settings->version) ?>" />
+
+		<?php foreach($remote_css as $file): ?>
+         <link rel="stylesheet" href = "<?php echo $file ?>"/>
+        <?php endforeach ?>
+		
+		<?php foreach($remote_js as $file): ?>
+         <script src = "<? echo $file ?>"></script>
+        <?php endforeach ?>
+		
+        <?php foreach($css as $file): ?>
+        <link href="<?= url(ASSETS_URL_PATH . 'css/' . $file . '?v=' . $this->settings->version) ?>" rel="stylesheet" media="screen" />
+        <?php endforeach ?>
+
+        <?= \Phoenix\Event::get_content('head') ?>
+
+        <?php if(!empty($this->settings->custom->head_js)): ?>
+        <?= $this->settings->custom->head_js ?>
+        <?php endif ?>
+
+        <?php if(!empty($this->settings->custom->head_css)): ?>
+        <style>
+            <?= $this->settings->custom->head_css ?>
+        </style>
+        <?php endif ?>
+    </head>
+
+    <body>
+        <?= $this->views['header'] ?>
+
+        <?= $this->views['content'] ?>
+
+        <?= $this->views['footer'] ?>
+
+        <?= \Phoenix\Event::get_content('modals') ?>
+
+        <input type="hidden" id="url" name="url" value="<?= url() ?>" />
+        <input type="hidden" name="global_token" value="<?= \Phoenix\Middlewares\Csrf::get('global_token') ?>" />
+
+        <?php foreach($js as $file): ?>
+        <script src="<?= SITE_URL . ASSETS_URL_PATH ?>js/<?= $file ?>?v=<?= $this->settings->version ?>"></script>
+        <?php endforeach ?>
+
+        <?= \Phoenix\Event::get_content('javascript') ?>
+		<script>
+			if ( window.history.replaceState ) {
+  				window.history.replaceState( null, null, window.location.href );
+			}
+		</script>
+    </body>
+</html>

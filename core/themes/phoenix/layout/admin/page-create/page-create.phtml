@@ -1,0 +1,110 @@
+<div class="main-content" id="panel">
+    <?php display_notifications(); ?>
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+    <div class = "card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title ">Create a Page</h4>
+        </div>
+        <div class = "card-body">
+             <form action="" method="post" role="form">
+                <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Page Title</label>
+                            <input type="text" name="title" class="form-control" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Position</label>
+                            <select class="custom-select" name="position">
+                                <option value="bottom">Bottom</option>
+                                <option value="top">Top</option>
+                                <option value="hidden">Hidden</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label id="url_label">URL Slug</label>
+                            <input type="text" name="url" class="form-control" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select class="custom-select" name="type">
+                                <option value="internal">Internal</option>
+                                <option value="external">External</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="description_container" class="col-12">
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea id="description" name="description" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" name="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<?php ob_start() ?>
+    <script src="<?= url(ASSETS_URL_PATH . 'js/libraries/tinymce/tinymce.min.js') ?>"></script>
+    <script>
+        tinymce.init({
+            selector: '#description',
+            plugins: 'code preview fullpage autolink directionality visualblocks visualchars fullscreen image link media codesample table hr pagebreak nonbreaking toc advlist lists imagetools',
+            toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent | removeformat code',
+            height: "480"
+        });
+
+        $('[name="type"]').on('change', (event) => {
+
+            let selectedOption = $(event.currentTarget).find(':selected').attr('value');
+
+            switch(selectedOption) {
+
+                case 'internal':
+
+                    $('#url_label').html(<?= json_encode("INTERNAL") ?>);
+                    $('#description_container').show();
+
+                    break;
+
+                case 'external':
+
+                    $('#url_label').html(<?= json_encode("EXTERNAL") ?>);
+                    $('#description_container').hide();
+
+                    break;
+            }
+
+        });
+    </script>
+<?php \Phoenix\Event::add_content(ob_get_clean(), 'javascript') ?>
