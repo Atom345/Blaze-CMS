@@ -15,9 +15,9 @@
     <br />
     <a href="https://phoenix.ltda/demo">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/AtomDev345/Phoenix-CMS/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/AtomDev345/Phoenix-CMS/issues">Request Feature</a>
   </p>
 </p>
 
