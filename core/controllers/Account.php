@@ -67,10 +67,14 @@ class Account extends Controller {
 
                 $_SESSION['success'][] = "Account Updated!";
 
+                Hooks::register_action('user_account_change');
+
                 if(!empty($_POST['old_password']) && !empty($_POST['new_password'])) {
                     $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
 
                     Database::update('users', ['password' => $new_password], ['user_id' => $this->user->user_id]);
+
+                    Hooks::register_action('user_password_change');
 
                     /* Set a success message and log out the user */
                     Authentication::logout();
@@ -100,6 +104,7 @@ class Account extends Controller {
 
             /* Delete the user */
             (new User(['settings' => $this->settings]))->delete($this->user->user_id);
+            Hooks::register_action('user_account_deleted');
             Authentication::logout();
 
         }

@@ -18,6 +18,7 @@ use Phoenix\Language;
 use Phoenix\Logger;
 use Phoenix\Middlewares\Authentication;
 use Phoenix\Routing\Router;
+use Phoenix\Hooks\Hooks;
 
 class Login extends Controller {
 
@@ -93,7 +94,6 @@ class Login extends Controller {
                 ], ['user_id' => $login_account->user_id]);
 
                 Logger::users($login_account->user_id, 'login.success');
-				
 
                 $_SESSION['success'][] = lang('login_success', 1);
                 

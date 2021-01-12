@@ -36,7 +36,7 @@ class Hooks
     
     public static function list_actions(){
         var_dump(self::$hooks);
-    }
+	}
 
 }
 

@@ -44,7 +44,7 @@ class Controller {
             /* Get the top menu custom pages */
             $pages = (new Page(['database' => $this->database]))->get_pages('top');
             Hooks::register_action('top_pages_loaded');
-
+            
             /* Establish the menu view */
             $menu = new \Phoenix\Views\View('includes/header', (array) $this);
             $this->addViewContent('header', $menu->run([ 'pages' => $pages ]));
