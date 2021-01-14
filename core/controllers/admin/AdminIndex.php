@@ -15,6 +15,7 @@ namespace Phoenix\Controllers;
 
 use Phoenix\Database\Database;
 use Phoenix\Middlewares\Authentication;
+use Phoenix\Widgets\Widgets;
 
 class AdminIndex extends Controller
 {
@@ -26,15 +27,7 @@ class AdminIndex extends Controller
             'update' => 'update',
         ];
 
-        $users = Database::$database
-            ->query(
-                "
-            SELECT
-              (SELECT COUNT(*) FROM `users` WHERE MONTH(`last_activity`) = MONTH(CURRENT_DATE()) AND YEAR(`last_activity`) = YEAR(CURRENT_DATE())) AS `active_users_month`,
-              (SELECT COUNT(*) FROM `users`) AS `active_users`
-        "
-            )
-            ->fetch_object();
+       
 		
 		/* Count total plugins and themes */
 		$total_plugins  = count( glob(PLUGIN_PATH . '*', GLOB_ONLYDIR) );
@@ -140,23 +133,54 @@ class AdminIndex extends Controller
             }
         }
 		}
-		
+
+		$user_widget = array(
+			'id' => 'users',
+			'title' => 'Website Users',
+			'color' => 'bg-purple',
+			'desc' => 'All the users registered on your website.',
+			'data' => count_users()
+		);
+
+		$dev_widget = array(
+			'id' => 'dev',
+			'title' => 'Developer Mode',
+			'color' => 'bg-danger',
+			'desc' => 'The status of developer mode.',
+			'data' => $dev_mode
+		);
+
+		$bugs_widget = array(
+			'id' => 'bugs',
+			'title' => 'Phoenix Bugs',
+			'color' => 'bg-primary',
+			'desc' => 'Bugs the community has found.',
+			'data' => $bugs_num
+		);
+
+		$version_widget = array(
+			'id' => 'version',
+			'title' => 'Phoenix Version',
+			'color' => 'bg-success',
+			'desc' => 'Your current version of Phoenix.',
+			'data' => $phoenix_version
+		);
+
+		Widgets::store_widget($user_widget);
+		Widgets::store_widget($dev_widget);
+		Widgets::store_widget($bugs_widget);
+		Widgets::store_widget($version_widget);
+
         /* Main View */
         $data = [
             'values' => $values,
 			'is_localhost' => $is_localhost,
-            'users' => $users,
-			'bugs_num' => $bugs_num,
 			'update_error' => $update_error,
 			'active_api_key' => $active_api_key,
 			'installer' => $installer,
             'new_version' => $new_version,
             'latest_version' => $latest_version,
-            'phoenix_version' => $phoenix_version,
-            'update_package' => $update_package,
-			'total_plugins' => $total_plugins,
-			'total_themes' => $total_themes,
-			'dev_mode' => $dev_mode
+            'update_package' => $update_package
         ];
 
         $view = new \Phoenix\Views\View('admin/index/index', (array) $this);

@@ -32,8 +32,6 @@ class Title {
 
         self::$full_title = self::$page_title . ($full ? null : ' - ' . self::$site_title);
 
-        Hooks::add_hook('title_loaded');
-
     }
 
 

@@ -15,10 +15,11 @@ licensed under the GPL 3.0 lisence.
 /* Set up file structure paths */
 define('ROOT_PATH', realpath(__DIR__ . '/..') . '/');
 define('APP_PATH', 'core/');
-define('PLUGIN_PATH', APP_PATH . 'plugins/');
-define('UPLOADS_PATH', APP_PATH . 'media/');
-define('UPLOADS_URL_PATH', APP_PATH . 'media/');
-define('LANGUAGE_PATH', APP_PATH . 'languages/');
+define('CUSTOM_PATH',  APP_PATH . '../custom/');
+define('PLUGIN_PATH', CUSTOM_PATH . 'plugins/');
+define('UPLOADS_PATH', CUSTOM_PATH . 'media/');
+define('UPLOADS_URL_PATH', CUSTOM_PATH . 'media/');
+define('LANGUAGE_PATH', CUSTOM_PATH . 'languages/');
 define('CONTROLLER_PATH', APP_PATH . 'controllers/');
 define('HELPER_PATH', APP_PATH . 'helpers/');
 define('REQUEST_PATH', APP_PATH . 'request/');
@@ -45,6 +46,7 @@ if(DEV_MODE == true){
 /* Fetch these files in order */
 require_once APP_PATH . 'libs/App.php';
 require_once APP_PATH . 'libs/Hooks.php';
+require_once APP_PATH . 'libs/Widgets.php';
 require_once APP_PATH . 'libs/Parameters.php';
 require_once APP_PATH . 'libs/Time.php';
 require_once APP_PATH . 'libs/Controller.php';

@@ -8,5 +8,4 @@ RewriteCond %{REQUEST_FILENAME} !-l
 
 RewriteRule ^(.+)$ index.php?phoenix=$1 [QSA,L]
 
-
 </IfModule>

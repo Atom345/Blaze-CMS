@@ -580,4 +580,11 @@ function get_server_memory_usage(){
 	return $memory_usage;
 }
 
+function count_users(){
+    $users = Phoenix\Database\Database::$database->query("SELECT COUNT(*) AS users FROM `users`"); 
+    $result = $users->fetch_assoc();
+
+   return $result['users'];
+}
+
 ?>

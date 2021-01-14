@@ -23,67 +23,36 @@
 			 </div>
            </div>
 		 <?php } ?>
+
+     <?php if($data->is_localhost == true){ ?>
+		  <div class="alert alert-info">
+			 <div class = "row">
+		     <div class = "col-11">
+           <i class = "fas fa-exclamation-triangle"></i> <b>Warning:</b> You are running Phoenix on a localhost server. Some componets or plugins may not work correctly.
+		     </div>
+        </div>
+      </div>
+		 <?php } ?>
           <div class="row">
+          <?php foreach(Phoenix\Widgets\Widgets::get_widgets() as $widget){ ?>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-purple">
+                <div class="card-icon <?php echo $widget['color'] ?>">
                   <i class="fas fa-user" style = "margin-top:25px"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Users</h4>
+                    <h4><?php echo $widget['title'] ?></h4>
                   </div>
                   <div class="card-body">
-                   <?php echo $data->users->active_users ?>
+                   <?php echo $widget['data'] ?>
                   </div>
+                    <?php echo $widget['desc'] ?>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
-                  <i class="fas fa-user-clock" style = "margin-top:25px"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>online Users</h4>
-                  </div>
-                  <div class="card-body">
-                    <?php echo $data->users->active_users_month ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="fas fa-bug" style = "margin-top:25px"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Bugs Found</h4>
-                  </div>
-                  <div class="card-body">
-                    <?php echo $data->bugs_num ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-download" style = "margin-top:25px"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Phoenix Version</h4>
-                  </div>
-                  <div class="card-body">
-                    <?php echo $this->settings->version ?>
-                  </div>
-                </div>
-              </div>
-            </div> 
+            <?php } ?>
+          </div> 
 			  <div class = "row">
 			 <div class = "col-md-6">
                 <div class="card card-primary">

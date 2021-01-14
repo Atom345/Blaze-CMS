@@ -60,20 +60,21 @@
 					 </div>
                    </div>
                  </div>
-<div class="modal fade" id="pluginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-muted" id="exampleModalLabel">Generate Plugin Files</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        This will generate a a basic plugin skeleton to use when creating your own plugins.
-        <br>
-        <br>
-        <form method  = "post">
+
+
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="pluginModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Create a Plugin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              <form method  = "post">
         <div class="form-group">
         <input class = "form-control form-control-muted" placeholder = "Plugin Name" type = "text" name = "generate_plugin_name" required>
         </div>
@@ -89,24 +90,13 @@
         <div class="form-group">
         <input class = "form-control form-control-muted" placeholder = "Plugin Version" type = "text" name = "generate_plugin_version" required>
         </div>
-        
-        <div class="form-check" style = "margin:10px;">
-      <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value = "true" name = "generate_plugin_installer">
-          Use Installer (install.php & uninstall.php)
-          <span class="form-check-sign">
-              <span class="check"></span>
-          </span>
-      </label>
+              </div>
+              <div class="modal-footer bg-whitesmoke br">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" type = "submit">Save changes</button>
+              </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-link" name = "generate_plugin">Generate Files</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
-        </div>
-    </div>

@@ -60,7 +60,7 @@ class App {
 
         /* Fetch and load set theme, resources, and configs */
         $theme = $settings->theme;
-        define('BASIC_THEME_PATH', APP_PATH . 'themes/');
+        define('BASIC_THEME_PATH', CUSTOM_PATH . 'themes/');
         define('LOADED_THEME', BASIC_THEME_PATH . $theme . '/');
         define('ASSETS_PATH', LOADED_THEME . 'assets/');
         define('ASSETS_URL_PATH', LOADED_THEME . 'assets/');

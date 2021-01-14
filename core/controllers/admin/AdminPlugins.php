@@ -37,11 +37,6 @@ class AdminPlugins extends Controller {
 		    $plugin_author = $_POST['generate_plugin_author'];
 		    $plugin_desc = $_POST['generate_plugin_desc'];
 		    $plugin_version = $_POST['generate_plugin_version'];
-		    if(isset($_POST['generate_plugin_installer'])){
-		        $installer = 1;
-		    }else{
-		        $installer = 0;
-		    }
 		  
 		    $plugin_folder = strtolower($plugin_name);
 		    
@@ -83,14 +78,7 @@ $plugin_desc = "'. $plugin_desc .'";
 
 /* Plugin Version (e.g v1.0.0) */
 $plugin_version = "'. $plugin_version .'";
-
-/* 
-Set below varible to `1` if your plugin 
-uses an install.php file. 
-*/
-$plugin_install = '. $installer .';
 		    
-	
 ?>	        
 ';
 		        

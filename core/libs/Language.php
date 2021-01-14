@@ -23,7 +23,7 @@ class Language{
 
 		$lang = get_settings_from_key("default_language");	
 
-		$lang_path = APP_PATH . 'languages/' . $lang . '.php';
+		$lang_path = CUSTOM_PATH . 'languages/' . $lang . '.php';
 		
 		if(file_exists($lang_path)){
 			require_once $lang_path;

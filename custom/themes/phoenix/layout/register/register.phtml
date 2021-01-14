@@ -1,13 +1,4 @@
 <?php display_notifications() ?>
-<?php
-function test_hooks(){
-	die("Hello!");	
-}
-
-Phoenix\Hooks\Hooks::add('hook_one', 'test_hooks');
-Phoenix\Hoks\Hooks::fire('hook_one');
-
-?>
 <div class="container mt-5">
         <div class="row">
           <div class="col-md-8 offset-md-2">
