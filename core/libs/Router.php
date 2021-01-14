@@ -15,6 +15,11 @@ namespace Phoenix\Routing;
 
 use Phoenix\Hooks\Hooks;
 
+function fetch_routes(){
+    $routes_include = require_once CUSTOM_PATH . 'Routes.php';
+    return $routes_include;
+}
+
 class Router {
     public static $params = [];
     public static $path = '';
@@ -25,155 +30,7 @@ class Router {
     ];
     public static $method = 'index';
 
-    public static $routes = [
-        '' => [
-		
-            'index' => [
-                'controller' => 'Index'
-            ],
-
-            'login' => [
-                'controller' => 'Login',
-                
-            ],
-
-            'register' => [
-                'controller' => 'Register'
-            ],
-
-            'logout' => [
-                'controller' => 'Logout'
-            ],
-
-            'notfound' => [
-                'controller' => 'NotFound'
-
-            ],
-			
-			'newsfeed' => [
-                'controller' => 'Newsfeed'
-
-            ],
-			
-			'account' => [
-                'controller' => 'Account'
-
-            ],
-			
-			'account-details' => [
-                'controller' => 'AccountDetails'
-
-            ],
-			
-			 'activate-user' => [
-                'controller' => 'ActivateUser'
-            ],
-
-            'lost-password' => [
-                'controller' => 'LostPassword'
-            ],
-			
-			'resend-activation' => [
-                'controller' => 'ResendActivation'
-            ],
-			
-			 'page' => [
-                'controller' => 'Page'
-            ],
-			
-            'dashboard' => [
-                'controller' => 'Dashboard',
-            ],
-            
-        ],
-
-        /* Admin Panel */
-        'admin' => [
-            'index' => [
-                'controller' => 'AdminIndex'
-				
-            ],
-
-            'users' => [
-                'controller' => 'AdminUsers'
-            ],
-
-            'user-create' => [
-                'controller' => 'AdminUserCreate'
-            ],
-
-            'user-view' => [
-                'controller' => 'AdminUserView'
-            ],
-
-            'user-update' => [
-                'controller' => 'AdminUserUpdate'
-            ],
-
-
-            'pages' => [
-                'controller' => 'AdminPages'
-            ],
-
-            'page-create' => [
-                'controller' => 'AdminPageCreate'
-            ],
-
-            'page-update' => [
-                'controller' => 'AdminPageUpdate'
-            ],
-
-            'settings' => [
-                'controller' => 'AdminSettings',
-				
-            ],
-			
-			'plugins' => [
-                'controller' => 'AdminPlugins',
-				
-            ],
-			
-			'theme' => [
-                'controller' => 'AdminTheme',
-				
-            ],
-            
-            'advanced' => [
-                'controller' => 'AdminAdvanced',
-				
-            ],
-            
-            'features' => [
-                'controller' => 'AdminFeatures',
-				
-            ],
-			
-			'changelog' => [
-                'controller' => 'AdminChangelog',
-				
-            ],
-			
-			'cms' => [
-                'controller' => 'AdminCMS',
-				
-            ],
-			
-			'store' => [
-                'controller' => 'AdminStore',
-				
-            ],
-			
-			'api' => [
-                'controller' => 'AdminAPI',
-				
-            ],
-        ]
-    ];
-
-
-
     public static function parse_url() {
-
         $params = self::$params;
 
         if(isset($_GET['phoenix'])) {
@@ -181,7 +38,6 @@ class Router {
         }
 
         self::$params = $params;
-
         return $params;
 
     }
@@ -192,7 +48,7 @@ class Router {
     }
 
     public static function parse_controller() {
-
+        $routes = fetch_routes();
         /* Check for potential other paths than the default one (admin panel) */
         if(!empty(self::$params[0])) {
 
@@ -208,7 +64,7 @@ class Router {
 
         if(!empty(self::$params[0])) {
 
-            if(array_key_exists(self::$params[0], self::$routes[self::$path]) && file_exists(APP_PATH . 'controllers/' . (self::$path != '' ? self::$path . '/' : null) . self::$routes[self::$path][self::$params[0]]['controller'] . '.php')) {
+            if(array_key_exists(self::$params[0], $routes[self::$path]) && file_exists(APP_PATH . 'controllers/' . (self::$path != '' ? self::$path . '/' : null) . $routes[self::$path][self::$params[0]]['controller'] . '.php')) {
 
                 self::$controller_key = self::$params[0];
 
@@ -225,11 +81,11 @@ class Router {
         }
 
         /* Save the current controller */
-        self::$controller = self::$routes[self::$path][self::$controller_key]['controller'];
+        self::$controller = $routes[self::$path][self::$controller_key]['controller'];
 
         /* Make sure we also save the controller specific settings */
         if(isset(self::$routes[self::$path][self::$controller_key]['settings'])) {
-            self::$controller_settings = array_merge(self::$controller_settings, self::$routes[self::$path][self::$controller_key]['settings']);
+            self::$controller_settings = array_merge(self::$controller_settings, $routes[self::$path][self::$controller_key]['settings']);
         }
 
         return self::$controller;
