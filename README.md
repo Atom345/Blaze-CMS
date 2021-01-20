@@ -19,7 +19,9 @@
     ·
     <a href="https://github.com/AtomDev345/Phoenix-CMS/issues">Request Feature</a>
   </p>
-  <img src = "https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield" href = "https://discord.gg/nmJ76hN">
+   <a href="https://discord.gg/nmJ76hN">
+        <img src="https://img.shields.io/discord/748441865002680410?logo=discord"
+            alt="chat on Discord"></a>
 </p>
 
 <!-- TABLE OF CONTENTS -->
