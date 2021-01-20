@@ -19,7 +19,7 @@ $stats = array(
 );
 
 Phoenix\Widgets\Widgets::store_widget($stats);
-var_dump(Phoenix\Widgets\Widgets::get_widgets());
+
 }
 
 ?>

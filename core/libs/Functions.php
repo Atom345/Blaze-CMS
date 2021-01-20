@@ -398,12 +398,12 @@ function get_file_headers($file, $default_headers) {
 }
 
 function get_plugins() {
-    $plugins = glob(APP_PATH . 'plugins/*', GLOB_ONLYDIR);
+    $plugins = glob(CUSTOM_PATH . 'plugins/*', GLOB_ONLYDIR);
 	return $plugins;
 }
 
 function get_themes() {
-    $themes = glob(APP_PATH . '/themes/*', GLOB_ONLYDIR);
+    $themes = glob(CUSTOM_PATH . '/themes/*', GLOB_ONLYDIR);
 	return $themes;
 }
 

@@ -1,0 +1,23 @@
+[14-Jan-2021 15:00:08 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
+[14-Jan-2021 15:01:10 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
+[14-Jan-2021 15:01:48 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
+[14-Jan-2021 15:01:49 America/Denver] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "add_widget_stats" not found or invalid function name in C:\Users\Bryan\Desktop\localhost\htdocs\core\libs\Hooks.php:19
+Stack trace:
+#0 C:\Users\Bryan\Desktop\localhost\htdocs\core\libs\Hooks.php(19): call_user_func_array('add_widget_stat...', Array)
+#1 C:\Users\Bryan\Desktop\localhost\htdocs\custom\plugins\test\init.php(9): Phoenix\Hooks\Hooks::hook('admin_container...', 'add_widget_stat...')
+#2 C:\Users\Bryan\Desktop\localhost\htdocs\core\libs\App.php(120): require_once('C:\\Users\\Bryan\\...')
+#3 C:\Users\Bryan\Desktop\localhost\htdocs\core\libs\Functions.php(16): Phoenix\App->__construct()
+#4 C:\Users\Bryan\Desktop\localhost\htdocs\index.php(7): build()
+#5 {main}
+  thrown in C:\Users\Bryan\Desktop\localhost\htdocs\core\libs\Hooks.php on line 19
+[14-Jan-2021 15:02:37 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
+[14-Jan-2021 15:03:17 America/Denver] PHP Fatal error:  Uncaught Error: Class "Phoenix\Controllers\Phoenix\Widgets\Widgets" not found in C:\Users\Bryan\Desktop\localhost\htdocs\core\controllers\admin\AdminIndex.php:173
+Stack trace:
+#0 [internal function]: Phoenix\Controllers\AdminIndex->index()
+#1 C:\Users\Bryan\Desktop\localhost\htdocs\core\libs\App.php(112): call_user_func_array(Array, Array)
+#2 C:\Users\Bryan\Desktop\localhost\htdocs\core\libs\Functions.php(16): Phoenix\App->__construct()
+#3 C:\Users\Bryan\Desktop\localhost\htdocs\index.php(7): build()
+#4 {main}
+  thrown in C:\Users\Bryan\Desktop\localhost\htdocs\core\controllers\admin\AdminIndex.php on line 173
+[14-Jan-2021 15:03:26 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
+[14-Jan-2021 15:04:10 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37

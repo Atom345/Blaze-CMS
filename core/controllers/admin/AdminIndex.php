@@ -166,11 +166,10 @@ class AdminIndex extends Controller
 			'data' => $phoenix_version
 		);
 
-		Widgets::store_widget($user_widget);
+		/* Widgets::store_widget($user_widget);
 		Widgets::store_widget($dev_widget);
 		Widgets::store_widget($bugs_widget);
-		Widgets::store_widget($version_widget);
-
+		Widgets::store_widget($version_widget); */
         /* Main View */
         $data = [
             'values' => $values,
