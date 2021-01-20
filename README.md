@@ -19,7 +19,7 @@
     ·
     <a href="https://github.com/AtomDev345/Phoenix-CMS/issues">Request Feature</a>
   </p>
-  [![Discord Chat](https://img.shields.io/discord/308323056592486420.svg)](https://discord.gg/)
+  [![Discord](https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield)](https://discord.gg/nmJ76hN)
 </p>
 
 <!-- TABLE OF CONTENTS -->
