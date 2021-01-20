@@ -19,7 +19,7 @@
     ·
     <a href="https://github.com/AtomDev345/Phoenix-CMS/issues">Request Feature</a>
   </p>
-  [![Discord](https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield)]
+  <img src = "https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield" href = "">
 </p>
 
 <!-- TABLE OF CONTENTS -->
