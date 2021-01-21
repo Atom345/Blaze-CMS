@@ -10,8 +10,6 @@
   <p align="center">
     We do what WordPress can't.
     <br />
-    <a href="https://phoenix.ltda/docsV2"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="https://phoenix.ltda/demo">View Demo</a>
     ·
@@ -23,7 +21,7 @@
         <img src="https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield"
             alt="Chat on our Discord!"></a>
 </p>
-
+<p align="center">
 ## 🚀 What makes Phoenix great?
 
 |  | Phoenix CMS |
@@ -35,23 +33,10 @@
 | 📱 | **Responsive**, attract users to your website from all devices. |
 | 🔌 | **Your own API** to build off of Phoenix and extend your projects. |
 | 🏎️ | **Fast Support** |
-
-<!-- ABOUT THE PROJECT -->
-## About Phoenix PHP
-
-Phoenix PHP was created with speed and security in mind. Our goal is to provide a alternative to WordPress that is faster, more secure, and lazy-person friendly. 😉
-
-Why Phoenix?:
-* Your time should be focused on creating something amazing. Phoenix PHP helps you create a website quickly, without the BS. 🎨
-* Phoenix is fast. When creating a website, speed is an important factor for website quality and development. 🚆
-* Phoenix is secure. We provide options for bank level encryptions. 🔐
-
-Phoenix provides many options to create and maintain your website. You will truly have peace of mind when creating with Phoenix PHP.
-
-A list of commonly used resources that our team found helpful are listed in the acknowledgements.
+</p>
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started 💻
 
 Installing Phoenix is a breeze. Simply follow the steps below to install Phoenix PHP.
 
@@ -66,19 +51,14 @@ Installing Phoenix is a breeze. Simply follow the steps below to install Phoenix
 ### Installation
 
 1. Download Phoenix PHP from here: [https://phoenix.ltda](here)
-2. Extract the phoenix ZIP file to your root path or sub-folder.
+2. Extract the Phoenix ZIP file to your root path or sub-folder.
 3. Visit the URL where you extracted Phoenix to. (https://example.com/ | https://subdomain.example.com)
 4. Follow the steps when the install wizard shows up.
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-_For examples, please refer to the [Documentation](https://phoenix.ltda/docsV2)_
-
 <!-- ROADMAP -->
-## Roadmap
+## Roadmap 🛣️
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Atom345/phoenix-cms/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -92,12 +72,12 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 <!-- LICENSE -->
-## License
+## License 📜
 
-Distributed under the GNU General Public License v3.0 License. See `LICENSE` for more information.
+Phoenix CMS is distributed under the GNU General Public License v3.0 License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
-## Contact
+## Contact 📬
 
 Email - admin@phoenix.ltda
 <br>
