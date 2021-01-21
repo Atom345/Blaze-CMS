@@ -21,7 +21,6 @@
         <img src="https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield"
             alt="Chat on our Discord!"></a>
 </p>
-<p align="center">
 ## 🚀 What makes Phoenix great?
 
 |  | Phoenix CMS |
@@ -33,7 +32,6 @@
 | 📱 | **Responsive**, attract users to your website from all devices. |
 | 🔌 | **Your own API** to build off of Phoenix and extend your projects. |
 | 🏎️ | **Fast Support** |
-</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started 💻
@@ -61,7 +59,7 @@ Installing Phoenix is a breeze. Simply follow the steps below to install Phoenix
 See the [open issues](https://github.com/Atom345/phoenix-cms/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
-## Contributing
+## Contributing 🤝
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
