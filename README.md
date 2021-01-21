@@ -18,12 +18,11 @@
     <a href="https://github.com/AtomDev345/Phoenix-CMS/issues">Request Feature</a>
   </p>
    <a href="https://discord.gg/nmJ76hN">
-        <img src="https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield"
-            alt="Chat on our Discord!"></a>
+        <img src="https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield" alt="Chat on our Discord!">
+    </a>
 </p>
-## 🚀 What makes Phoenix great?
 
-|  | Phoenix CMS |
+|  | Phoenix CMS 🚀 |
 | - | ------------ |
 | ⚡ | **Powerful and Unique**, we do the hard stuff. |
 | 😎 | **Built for noobs and pros**, no matter what your experience is. |
