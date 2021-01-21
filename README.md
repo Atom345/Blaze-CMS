@@ -20,8 +20,10 @@
    <a href="https://discord.gg/nmJ76hN">
         <img src="https://discordapp.com/api/guilds/748441865002680410/widget.png?style=shield" alt="Chat on our Discord!">
     </a>
+    <a href="https://gitter.im/Phoenix-CMS/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+        <img src="https://badges.gitter.im/Phoenix-CMS/community.svg" alt="Chat on our Discord!">
+    </a>
 </p>
-[![Gitter](https://badges.gitter.im/Phoenix-CMS/community.svg)](https://gitter.im/Phoenix-CMS/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 |  | Phoenix CMS 🚀 |
 | - | ------------ |
