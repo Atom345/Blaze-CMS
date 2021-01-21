@@ -24,21 +24,17 @@
             alt="Chat on our Discord!"></a>
 </p>
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
+## 🚀 What makes Phoenix great?
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-
-
+|  | Phoenix CMS |
+| - | ------------ |
+| ⚡ | **Powerful and Unique**, we do the hard stuff. |
+| 😎 | **Built for noobs and pros**, no matter what your experience is. |
+| 🧹 | **MVC and OOP structure** to keep PHP clean. |
+| 🎨 | **Modern and customizable design** to make your website look great. |
+| 📱 | **Responsive**, attract users to your website from all devices. |
+| 🔌 | **Your own API** to build off of Phoenix and extend your projects. |
+| 🏎️ | **Fast Support** |
 
 <!-- ABOUT THE PROJECT -->
 ## About Phoenix PHP
@@ -53,12 +49,6 @@ Why Phoenix?:
 Phoenix provides many options to create and maintain your website. You will truly have peace of mind when creating with Phoenix PHP.
 
 A list of commonly used resources that our team found helpful are listed in the acknowledgements.
-
-### Built With
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [PHP](https://www.php.net/)
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
