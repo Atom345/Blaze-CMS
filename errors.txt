@@ -21,3 +21,4 @@ Stack trace:
   thrown in C:\Users\Bryan\Desktop\localhost\htdocs\core\controllers\admin\AdminIndex.php on line 173
 [14-Jan-2021 15:03:26 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
 [14-Jan-2021 15:04:10 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
+[21-Jan-2021 09:15:57 America/Denver] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\Bryan\Desktop\localhost\htdocs\custom\themes\phoenix\layout\admin\index\index.phtml on line 37
