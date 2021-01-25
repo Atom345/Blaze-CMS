@@ -1,16 +1,15 @@
-<div class="main-content" id="panel">
-    <?php display_notifications(); ?>
-    <!-- Header -->
-    <div class="header bg-primary pb-6">
-      <div class="container-fluid">
-        <div class="header-body">
-          <div class="row align-items-center py-4">
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+      </nav>
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Edit Pgae</h1>
           </div>
-        </div>
-      </div>
-    </div>
     <!-- Page content -->
-    <div class="container-fluid mt--6">
     <div class = "card">
          <div class = "card-body">
             <form action="" method="post" role="form">
@@ -53,17 +52,6 @@
                                 <option value="external" <?= $data->page->type == 'external' ? 'selected="true"' : null ?>>External</option>
                             </select>
 							<small class = "text-muted">The target of your page.</small>
-                        </div>
-                    </div>
-					
-					<div class="col-md-6">
-                        <div class="form-group">
-                            <label>Permissions</label>
-                            <select class="form-control" name="permissions">
-                                <option value="internal" <?= $data->page->permissions == '1' ? 'selected="true"' : null ?>>Admin</option>
-                                <option value="external" <?= $data->page->permissions == '0' ? 'selected="true"' : null ?>>User</option>
-                            </select>
-							<small class = "text-muted">The permissions required to view the page.</small>
                         </div>
                     </div>
 

@@ -34,7 +34,8 @@
       </div>
 		 <?php } ?>
           <div class="row">
-          <?php foreach(Phoenix\Widgets\Widgets::get_widgets() as $widget){ ?>
+          <?php if(is_array($data->widgets)){ ?>
+          <?php foreach($data->widgets as $widget){ ?>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon <?php echo $widget['color'] ?>">
@@ -52,6 +53,7 @@
               </div>
             </div>
             <?php } ?>
+            <?php } ?>
           </div> 
 			  <div class = "row">
 			 <div class = "col-md-6">
@@ -60,10 +62,10 @@
                     <h4>Phoenix News</h4>
                   </div>
                   <div class="card-body">
-					 <?php 
-					  $news = file_get_contents("https://phoenix.ltda/news/news.txt");
-					  echo $news;
-					  ?>
+					            <?php 
+					              $news = file_get_contents("https://phoenix.ltda/news/news.txt");
+					              echo $news;
+					            ?>
                   </div>
                 </div>
 			  </div>
@@ -76,7 +78,7 @@
                   <div class="card-body">
 					 Server CPU Usage: %<h3 id = "cpu"> </h3>
 					<br>
-                    Server Memory Usage: %<h3 id = "memory"> </h3>
+                    Server Memory Usage: %<h3 id = "memory"></h3>
                   </div>
                 </div>
 			  </div>
@@ -97,10 +99,11 @@
 				  <div class = "col-md-6">
 			    <div class="card card-secondary">
                   <div class="card-header">
-                    <h4>API Key</h4>
+                    <h4>Create New theme</h4>
                   </div>
                   <div class="card-body">
-					<p>Please be sure to obtain an API key from the official Phoenix website. With an API key you will receieve auto updates, have access to our store, and recieve helpful support.</p>
+					        <p>By pressing the button below, Phoenix will generate theme skeleton files based on the details provided. You can find your new theme in <code>custom/themes/YOUR_THEME</code></p>
+                  <button class = "btn btn-dark"><i class = "fas fa-plus-circle"></i> Create theme</button>
                   </div>
                 </div>
 				  </div>

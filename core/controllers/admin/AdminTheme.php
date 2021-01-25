@@ -29,7 +29,6 @@ class AdminTheme extends Controller {
 
             $_POST['primary_color'] = filter_var($_POST['primary_color'], FILTER_SANITIZE_STRING) ?? $this->settings->primary_color;
             $_POST['secondary_color'] = filter_var($_POST['secondary_color'], FILTER_SANITIZE_STRING) ?? $this->settings->secondary_color;
-            $theme = $_POST['theme'] = filter_var($_POST['theme'], FILTER_SANITIZE_STRING) ?? $this->settings->choose_theme;
             $logo = (!empty($_FILES['logo']['name'])) ?? $this->settings->logo;
             $logo_name = $logo ? '' : $this->settings->logo;
             $favicon = (!empty($_FILES['favicon']['name'])) ?? $this->settings->favicon;
@@ -106,9 +105,9 @@ class AdminTheme extends Controller {
                 }
             }
 
-            if($theme){
+            if(isset($_POST['theme'])){
                 $stmt = Database::$database->prepare("UPDATE `settings` SET `value` = ? WHERE `key` = 'theme'");
-                $stmt->bind_param('s', $theme);
+                $stmt->bind_param('s', $_POST['theme']);
                 $stmt->execute();
                 $stmt->close();
             }
@@ -165,23 +164,9 @@ class AdminTheme extends Controller {
             }
 		}
 		
-		$theme_headers = array(
-        'Name'        => 'Theme Name',
-        'ThemeFolder' => 'Theme Folder',
-        'Description' => 'Description',
-        'Author'      => 'Author',
-        'AuthorURI'   => 'Author URI',
-        'Version'     => 'Version'
-        );
-		
-        /* Main View */
-        $data = [
-			'theme_headers' => $theme_headers
-		];
-		
         $view = new \Phoenix\Views\View('admin/theme/theme', (array) $this);
 
-        $this->addViewContent('content', $view->run($data));
+        $this->addViewContent('content', $view->run());
 
     }
     

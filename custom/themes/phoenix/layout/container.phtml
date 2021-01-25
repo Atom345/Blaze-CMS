@@ -14,7 +14,7 @@
         <?php endif ?>
 
         <link rel="stylesheet" href="<?php url(STYLES_CONFIG . '?v=' . $this->settings->version) ?>" />
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 		<?php foreach($remote_css as $file): ?>
          <link rel="stylesheet" href = "<?php echo $file ?>"/>
         <?php endforeach ?>
@@ -41,6 +41,7 @@
     </head>
 
     <body>
+        <?php if(Phoenix\Routing\Router::$controller_key !== 'api'){ ?>
         <?= $this->views['header'] ?>
 
         <?= $this->views['content'] ?>
@@ -49,6 +50,7 @@
 
         <?= \Phoenix\Event::get_content('modals') ?>
 
+        <?php } ?>
         <input type="hidden" id="url" name="url" value="<?= url() ?>" />
         <input type="hidden" name="global_token" value="<?= \Phoenix\Middlewares\Csrf::get('global_token') ?>" />
 

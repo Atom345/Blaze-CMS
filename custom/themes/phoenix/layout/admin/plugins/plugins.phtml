@@ -37,21 +37,20 @@
                   <div class="row">
 	                   <?php
 	                    foreach (get_plugins() as $plugin_path) {
-	                    if (file_exists($plugin_path . '/init.php')) {
-	                    require_once($plugin_path . '/init.php');
-	                    $plugin = str_replace(PLUGIN_PATH, '', $plugin_path);
-	                    
-	                    
-                        ?>
+	                    if (file_exists($plugin_path . '/plugin.xml')) {
+	                    $p_details = read_xml_file($plugin_path . '/plugin.xml');
+                      $plugin = str_replace(PLUGIN_PATH, '', $plugin_path);
+	                    ?>
 						<div class = "col-md-3">
 							<div class="card" style="width: 18rem;">
   							<div class="card-body">
 								<div class = "row">
 								<div class = "col-md-8">
-    							<h5 class="card-title"><?php echo $plugin_name ?></h5>
+    							<h5 class="card-title"><?php echo $p_details->plugin_name . ' - ' . $p_details->plugin_version?></h5>
 								</div>
 								</div>
-    								<p class="card-text"><?php echo $plugin_desc ?></p>
+                <?php echo $p_details->plugin_author ?>
+    						<p class="card-text"><?php echo $p_details->plugin_desc ?></p>
 								<button class = "btn btn-link" type = "submit">Install</button>
   							</div>
 							</div>

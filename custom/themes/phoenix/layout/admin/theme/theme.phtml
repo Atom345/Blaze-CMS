@@ -10,7 +10,7 @@
                     <div class="section-header-back">
                         <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
                     </div>
-                    <h1>Theme Management</h1>
+                    <h1>Website Design</h1>
                 </div>
                 <div class="section-body">
                     <h2 class="section-title">All About theme Management</h2>
@@ -19,35 +19,28 @@
                     </p>
                 </div>
             </section>
+            <div class="alert alert-primary alert-has-icon">
+            <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                <div class="alert-body">
+                    <div class="alert-title">Just a tip!</div>
+                       Create a new theme to customize your website more efficiently and avoid over-writes during updates.
+                    </div>
+                </div>
            <div class="row">
             <div class="col-md-8">
               <div class="card">
                 <div class="card-body">
                   <form action="" method="post" role="form" enctype="multipart/form-data">
                     <input type="hidden" name="token" value="<?= \Phoenix\Middlewares\Csrf::get() ?>" />
-                    <div class="row">
-	                   <div class="col-md-10">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Primary Color</label>
-                              <input class = "form-control" id = "primary_color" name="primary_color" type="text" value = "<?php echo $this->settings->primary_color ?>">
-						   <small class="text-muted">This is your main website color.</small>
-                        </div>
-                      </div>
-                      <div class = "col-md-2">
-                      <div class = "color-picker pull-right"></div>
-                      </div>
-                       <div class="col-md-10">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Secondary Color</label>
-                              <input class = "form-control" id = "secondary_color" name="secondary_color" type="text" value = "<?php echo $this->settings->secondary_color ?>">
-						   <small class="text-muted">This is your secondary website color. This is commonly the color of links and buttons.</small>
-                        </div>
-                      </div>
-                      <div class = "col-md-2">
-                      <div class = "color-picker-two pull-right"></div>
-                      </div>
-                      <div>
-					  <div class = "form-group">
+                    <div class = "form-group">
+                        <input type = "text" class = "form-control" name = "primary_color" value = "<?php echo $this->settings->primary_color ?>">
+                        <small class = "text-muted">Choose the primary color for your website.</small>
+                    </div>
+                    <div class = "form-group">
+                        <input type = "text" class = "form-control" name = "secondary_color" value = "<?php echo $this->settings->secondary_color ?>">
+                        <small class = "text-muted">Choose the secondary color for your website.</small>
+                    </div>
+					   <!-- <div class = "form-group">
                        <div class="custom-file">
         					<input type="file" class="custom-file-input" name = "logo" lang="en">
         					<label class="custom-file-label" for="customFileLang">Select file</label>
@@ -66,37 +59,29 @@
                                 <small class="text-muted"><a href="admin/theme/removefavicon<?= \Phoenix\Middlewares\Csrf::get_url_query() ?>">Remove Favicon</a></small>
                         
 					</div>
-</div>
-                    
+</div> -->
+                     
                     
                     <div class="row">
 	                   <?php
 	                    foreach (get_themes() as $theme_path) {
-	                    if (file_exists($theme_path . '/init.php')) {
-	                    require_once($theme_path . '/init.php');
+	                    if (file_exists($theme_path . '/theme.xml')) {
+	                    $t_details = read_xml_file($theme_path . '/theme.xml');
 	                    $theme = str_replace(BASIC_THEME_PATH, '', $theme_path);
-	                    
-	                    $data = get_file_headers($theme_path . '/init.php', $data->theme_headers);
-                            foreach($data as $key => $val){
-                            if($key=="Name") $theme_name = $val ?: $theme_name = "Not provided"; 
-                            if($key=="ThemeFolder") $theme_folder = $val ?: $theme_folder = "";
-                            if($key=="Description") $theme_desc = $val ?: $theme_desc = "Not provided";
-                            if($key=="Author") $theme_author = $val ?: $theme_author = "Not provided";
-                            if($key=="Version") $theme_version = $val ?: $theme_version = "Not provided";
-                        }
-                        ?>
+
+                      ?>
 
 	                    <div class="col-6">
                         <div class="card" style = "margin: 10px">
                         <div class="card-body">
-                            <h5 class="card-title"><b> <?php echo $theme_name ?></b></h5>
-                            <b>Theme Author:</b> <?php echo $theme_author ?>    
+                            <h5 class="card-title"><b> <?php echo $t_details->theme_name ?></b></h5>
+                            <b>Theme Author:</b> <?php echo $t_details->theme_author ?>    
                             <br>
-                            <b>Description:</b> <?php echo $theme_desc ?>
+                            <b>Description:</b> <?php echo $t_details->theme_desc ?>
                             <br>
-                            <b>Version:</b> <?php echo $theme_version ?>
+                            <b>Version:</b> <?php echo $t_details->theme_version ?>
                             <br>
-			                <input type="radio" name="theme" value="<? echo $theme_folder ?>" <? if($this->settings->theme == $theme_folder){ ?> checked <? } ?>/> Activate
+			                      <input type="radio" name="theme" value="<?php echo $t_details->theme_folder ?>"> Activate
                         </div>
                         </div>
                     </div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme>
+
+<theme_name>Phoenix</theme_name>
+<theme_author>The Phoenix Team</theme_author>
+<theme_version>1.1</theme_version>
+
+<theme_desc>The default theme for Phoenix CMS.</theme_desc>
+
+<theme_folder>phoenix</theme_folder>
+</theme>

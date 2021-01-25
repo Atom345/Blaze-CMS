@@ -75,8 +75,9 @@ class Controller {
             Hooks::register_action('admin_container_loaded');
         }
 
-        echo $wrapper->run();
-
+        if(Router::$path !== 'api'){
+            echo $wrapper->run();
+        }
     }
 
 

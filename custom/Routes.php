@@ -61,6 +61,17 @@ return $routes = [
         
     ],
 
+    /* API Routing */
+    'api' => [
+        'connect' => [
+            'controller' => 'APIConnect'
+        ],
+
+        'adduser' => [
+            'controller' => 'APIAddUser'
+        ],
+    ],
+
     /* Admin Panel */
     'admin' => [
         'index' => [

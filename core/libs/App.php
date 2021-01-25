@@ -113,7 +113,7 @@ class App {
 
         /* Render and output everything */
         $controller->run();
-
+       
         /* Get all plugins */
         foreach (get_plugins() as $plugin_path) {
             if (file_exists($plugin_path . '/init.php')) {

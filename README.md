@@ -8,7 +8,7 @@
   <h3 align="center">Phoenix PHP</h3>
 
   <p align="center">
-    We do what WordPress can't.
+    Bringing PHP back to life.
     <br />
     <br />
     <a href="https://phoenix.ltda/demo">View Demo</a>

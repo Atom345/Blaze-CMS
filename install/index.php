@@ -82,27 +82,20 @@ $structure = "
 -- Generation Time: Dec 31, 2020 at 08:47 PM
 -- Server version: 5.7.32-cll-lve
 -- PHP Version: 7.3.25
-
 SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
 START TRANSACTION;
 SET time_zone = '+00:00';
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `phoenix_db`
 --
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `comments`
 --
-
 CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `post_comment_id` int(11) DEFAULT NULL,
@@ -110,13 +103,10 @@ CREATE TABLE `comments` (
   `user_id` varchar(10) DEFAULT NULL,
   `comment_content` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `pages`
 --
-
 CREATE TABLE `pages` (
   `page_id` int(11) NOT NULL,
   `title` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -126,20 +116,15 @@ CREATE TABLE `pages` (
   `position` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total_veiws` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Dumping data for table `pages`
 --
-
 INSERT INTO `pages` (`page_id`, `title`, `url`, `description`, `type`, `position`, `total_veiws`) VALUES
 (9, 'Welcome', 'welcome', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h3>Welcome to Phoenix PHP! We hope you will enjoy using our software!</h3>\r\n<p><strong>Phoenix has quite a few out of the box features to help your website get started.</strong></p>\r\n<ul>\r\n<li>Powerful Admin Panel</li>\r\n<li>CRSF and SQL injection protection</li>\r\n<li>Good security</li>\r\n<li>Easy ORM to navigate the database</li>\r\n<li>Lots of Useful Functions</li>\r\n<li>A fully featured user management system</li>\r\n<li>A simple CMS module</li>\r\n<li>A plugin and theme system</li>\r\n</ul>\r\n<p><span style=\"color: #ffaf00;\">To access the Phoenix Dashboard, login to your admin account with the creditials you gave during installation.&nbsp;</span></p>\r\n<p><span style=\"color: #e74c3c;\"><strong>We also strongly recommend you change Phoenix\'s default theme. If you would like to help us improve the Phoenix default theme, you can join our Discord.</strong></span></p>\r\n<p>If you need any help or support, you can check out <span style=\"color: #e67e23;\"><a style=\"color: #e67e23;\" href=\"../../../docs\" target=\"_blank\" rel=\"noopener\">our docs&nbsp;</a>&nbsp;<span style=\"color: #000000;\">or use our live support chat.</span></span></p>\r\n<p>&nbsp;</p>\r\n<h5>Happy Building,</h5>\r\n<pre>- The Phoenix PHP Team</pre>\r\n</body>\r\n</html>', 'internal', 'top', '0');
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `plugins`
 --
-
 CREATE TABLE `plugins` (
   `id` int(11) NOT NULL,
   `remote_id` varchar(20) DEFAULT NULL,
@@ -149,13 +134,10 @@ CREATE TABLE `plugins` (
   `active` varchar(255) DEFAULT NULL,
   `time_stamp` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `posts`
 --
-
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `user_id` varchar(10) DEFAULT NULL,
@@ -166,59 +148,50 @@ CREATE TABLE `posts` (
   `post_visibility` varchar(3) DEFAULT NULL,
   `post_comments` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `settings`
 --
-
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL DEFAULT '',
   `value` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Dumping data for table `settings`
 --
-
 INSERT INTO `settings` (`id`, `key`, `value`) VALUES
 (1, 'ads', '{\"header\":null,\"footer\":null}'),
-(2, 'captcha', '{\"recaptcha_is_enabled\":\"\",\"recaptcha_public_key\":\"\",\"recaptcha_private_key\":\"\"}'),
-(3, 'cron', '{\"key\":\"457d5a6030114d85469d03f04bacf1ed\",\"reset_date\":\"2020-01-16 17:38:23\"}'),
-(4, 'default_language', 'english'),
-(5, 'email_confirmation', ''),
-(6, 'register_is_enabled', '1'),
-(7, 'email_notifications', '{\"emails\":\"\",\"new_user\":\"0\"}'),
-(8, 'facebook', '{\"is_enabled\":\"\",\"app_id\":\"\",\"app_secret\":\"\"}'),
-(9, 'favicon', ''),
-(10, 'logo', ''),
-(11, 'smtp', '{\"host\":\"\",\"from\":\"\",\"encryption\":\"ssl\",\"port\":\"465\",\"auth\":\"1\",\"username\":\"\",\"password\":\"\"}'),
-(12, 'custom', '{\"head_js\":null,\"head_css\":null}'),
-(13, 'socials', '{\"facebook\":\"\",\"instagram\":\"\",\"twitter\":\"\",\"youtube\":\"\"}'),
-(14, 'time_zone', 'America/Denver'),
-(15, 'title', 'Phoenix CMS'),
-(16, 'privacy_policy_url', ''),
-(17, 'terms_and_conditions_url', ''),
-(18, 'index_url', ''),
-(19, 'desc', 'Meet Phoenix, the next generation CMS platform for creating websites.'),
-(42, 'cms_and_posting', '1'),
-(43, 'theme', 'phoenix'),
-(44, 'version', '1.1'),
-(45, 'primary_color', '#FFB74D'),
-(46, 'secondary_color', '#FF9800'),
-(47, 'google_verify', '0'),
-(48, 'recaptcha_public_key', ''),
-(49, 'recaptcha_private_key', ''),
-(52, 'api_key', '');
+(2, 'default_language', 'english'),
+(3, 'email_confirmation', ''),
+(4, 'register_is_enabled', '1'),
+(5, 'email_notifications', '{\"emails\":\"\",\"new_user\":\"0\"}'),
+(6, 'favicon', ''),
+(7, 'logo', ''),
+(8, 'smtp', '{\"host\":\"\",\"from\":\"\",\"encryption\":\"ssl\",\"port\":\"465\",\"auth\":\"1\",\"username\":\"\",\"password\":\"\"}'),
+(9, 'custom', '{\"head_js\":null,\"head_css\":null}'),
+(10, 'socials', '{\"facebook\":\"\",\"instagram\":\"\",\"twitter\":\"\",\"youtube\":\"\"}'),
+(11, 'time_zone', 'America/Denver'),
+(12, 'title', 'Phoenix CMS'),
+(13, 'privacy_policy_url', ''),
+(14, 'terms_and_conditions_url', ''),
+(15, 'index_url', ''),
+(16, 'desc', 'Meet Phoenix, the next generation CMS platform for creating websites.'),
+(17, 'cms_and_posting', '1'),
+(18, 'theme', 'phoenix'),
+(19, 'version', '1.1'),
+(20, 'primary_color', '#FFB74D'),
+(21, 'secondary_color', '#FF9800'),
+(22, 'google_verify', '0'),
+(23, 'recaptcha_public_key', ''),
+(24, 'recaptcha_private_key', ''),
+(25, 'api_key', ''),
+(26, 'personal_key', 'Click the button below to generate a new key.');
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `users`
 --
-
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `email` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -237,13 +210,10 @@ CREATE TABLE `users` (
   `last_user_agent` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `total_logins` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `users_logs`
 --
-
 CREATE TABLE `users_logs` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -252,112 +222,93 @@ CREATE TABLE `users_logs` (
   `ip` varchar(64) DEFAULT NULL,
   `public` int(11) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Indexes for dumped tables
 --
-
 --
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
-
 --
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`page_id`);
-
 --
 -- Indexes for table `plugins`
 --
 ALTER TABLE `plugins`
   ADD PRIMARY KEY (`id`);
-
 --
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`post_id`);
-
 --
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `key` (`key`);
-
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
-
 --
 -- Indexes for table `users_logs`
 --
 ALTER TABLE `users_logs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `users_logs_user_id` (`user_id`);
-
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `plugins`
 --
 ALTER TABLE `plugins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
-
 --
 -- AUTO_INCREMENT for table `users_logs`
 --
 ALTER TABLE `users_logs`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
-
 --
 -- Constraints for dumped tables
 --
-
 --
 -- Constraints for table `users_logs`
 --
 ALTER TABLE `users_logs`
   ADD CONSTRAINT `users_logs_users_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
@@ -392,12 +343,20 @@ define("DEV_MODE", false);
 
 ?>
 ';
-    mkdir("../core/config", 0755);
+mkdir("../core/config", 0755);
 
-    $config_file =  '../core/config/config.php';
-    $handle = fopen($config_file, 'w') or die("The Phoenix CMS installer failed to create the config file.");
-    fwrite($handle, $config_string);
-    fclose($handle);
+$config_file =  '../core/config/config.php';
+$handle = fopen($config_file, 'w') or die("The Phoenix CMS installer failed to create the config file.");
+fwrite($handle, $config_string);
+fclose($handle);
+
+/* Add API key */
+$stmt = $db->prepare("UPDATE `settings` SET `value` = ? WHERE `key` = 'api_key'");
+$stmt->bind_param("s", $api_key_post);
+
+$api_key_post = $_POST['api_key'];
+$stmt->execute();
+$stmt->close();
 
 /* Add admin account */
 $empty = '';
@@ -430,13 +389,12 @@ header("Location: ../");
     <meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 
-	<link href="../core/themes/phoenix/assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="../core/themes/phoenix/assets/css/style.css" rel="stylesheet" />
-	<link href="../core/themes/phoenix/assets/css/components.css" rel="stylesheet" />
+	<link href="../custom/themes/phoenix/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../custom/themes/phoenix/assets/css/style.css" rel="stylesheet" />
+	<link href="../custom/themes/phoenix/assets/css/components.css" rel="stylesheet" />
 </head>
 
 <body>
-   
 	<div class = "container">
 		<form method = "post" action = "index.php">
 		<div class = "row">
@@ -452,14 +410,21 @@ header("Location: ../");
 								<div class = "form-group">
 									<input type = "text" class = "form-control m-2" name = "db_host" placeholder = "Database Host" required>
 									<small class = "text-muted">This is you database hostname. You can get this from your hosting provider.</small>
+                  <br>
 									<input type = "text" class = "form-control m-2" name = "db_user" placeholder = "Database User" required>
 									<small class = "text-muted">This is the name of the user that can access your database.</small>
+                  <br>
 									<input type = "text" class = "form-control m-2" name = "db_pass" placeholder = "Database Password" required>
 									<small class = "text-muted">This is the password used to connect to your database.</small>
+                  <br>
 									<input type = "text" class = "form-control m-2" name = "db_name" placeholder = "Database Name" required>
 									<small class = "text-muted">This is your database name.</small>
+                  <br>
 									<input type = "text" class = "form-control m-2" name = "site_url" placeholder = "Website URL" required>
 									<small class = "text-muted">This is your website URL. Make sure to add a trailing '/'.</small>
+                  <br>
+                  <input type = "text" class = "form-control m-2" name = "api_key" placeholder = "Phoenix API Key" required>
+									<small class = "text-muted">Claim your free API key from the Phoenix website.</small>
 								</div>
 							</div>
 							<div class = "col-md-6">
@@ -473,7 +438,7 @@ header("Location: ../");
 									<small class = "text-muted">This is the password used to login to your account.</small>
 								</div>
 							</div>
-							<button class = "btn btn-primary m-3" type = "submit" name = "submit">Install Phoenix <?php echo PHOENIX_VERSION ?></button>
+							<button class = "btn btn-primary m-3" type = "submit" name = "submit">Blast Off!</button>
 						</div>
 					</div>
 				</div>

@@ -115,11 +115,11 @@ class Register extends Controller {
                 Logger::users($registered_user_id, 'register.register');
 
                 /* Send notification to admin if needed */
-                if($this->settings->email_notifications->new_user && !empty($this->settings->email_notifications->emails)) {
+               /*  if($this->settings->email_notifications->new_user && !empty($this->settings->email_notifications->emails)) {
 
                     send_mail($this->settings, $this->settings->email_notifications->emails, lang('new_user_to', 1), lang('new_user_subject', 1), lang('new_user_content', 1) .$this->settings->title, 'notify');
                     
-                }
+                } */
 
                if($this->settings->email_confirmation == 1){
                 if($active == '1') {
@@ -138,7 +138,8 @@ class Register extends Controller {
                 }
 			   }else{
 				  activate_user($_POST['username']);
-				  $_SESSION['success'] = lang('register_account_created_login', 1);
+                  $_SESSION['success'] = lang('register_account_created_login', 1);
+                  redirect('login');
 			   }
 
             }

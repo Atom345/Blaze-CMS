@@ -48,7 +48,7 @@ class AdminPageUpdate extends Controller {
             }
 
             if(!Csrf::check()) {
-                $_SESSION['error'][] = $this->language->global->error_message->invalid_csrf_token;
+                $_SESSION['error'][] = "Invalid Token";
             }
 
             if(empty($_SESSION['error'])) {
@@ -59,7 +59,7 @@ class AdminPageUpdate extends Controller {
                 $stmt->close();
 
                 /* Set a nice success message */
-                $_SESSION['success'][] = $this->language->global->success_message->basic;
+                $_SESSION['success'][] = "Page saved!";
                 redirect('admin/page-update/' . $page_id);
 
             }

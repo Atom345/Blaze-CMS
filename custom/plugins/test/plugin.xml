@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+<plugin_name>Test Plugin</plugin_name>
+<plugin_author>The Phoenix Team</plugin_author>
+<plugin_version>1.0</plugin_version>
+
+<plugin_desc>A simple test/template plugin.</plugin_desc>
+
+</plugin>

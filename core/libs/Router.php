@@ -60,6 +60,16 @@ class Router {
                 self::$params = array_values(self::$params);
             }
 
+            if(self::$path !== 'admin'){
+            if (in_array(self::$params[0], ['api'])) {
+                self::$path = self::$params[0];
+
+                unset(self::$params[0]);
+
+                self::$params = array_values(self::$params);
+            }
+            }
+
         }
 
         if(!empty(self::$params[0])) {
@@ -72,10 +82,14 @@ class Router {
 
             } else {
 
-                /* Not found controller */
-                self::$path = '';
-                self::$controller_key = 'notfound';
-
+                if(self::$path == 'api'){
+                    response(404, "Endpoint is not found. Invalid Endpoint.", false);
+                    exit();
+                }else{
+                    /* Not found controller */
+                    self::$path = '';
+                    self::$controller_key = 'notfound';
+                }
             }
 
         }

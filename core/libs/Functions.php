@@ -403,7 +403,7 @@ function get_plugins() {
 }
 
 function get_themes() {
-    $themes = glob(CUSTOM_PATH . '/themes/*', GLOB_ONLYDIR);
+    $themes = glob(CUSTOM_PATH . 'themes/*', GLOB_ONLYDIR);
 	return $themes;
 }
 
@@ -585,6 +585,86 @@ function count_users(){
     $result = $users->fetch_assoc();
 
    return $result['users'];
+}
+
+function is_dev_mode(){
+    if(DEV_MODE == true){
+        return "On";
+    }else{
+        return "Off";
+    }
+}
+
+function has_api_key(){
+	if(!is_null(get_settings_from_key('api_key'))){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function get_version(){
+    return get_settings_from_key('version');
+}
+
+function get_bugs_num(){
+if(!is_null(get_settings_from_key('api_key'))){
+    $bugs = read_api_output('https://phoenix.ltda/api/bugs/all', 'GET', get_settings_from_key('api_key'));
+	return $bugs['data'];
+}
+}
+
+function read_xml_file($file){
+    $xml = simplexml_load_file($file);
+    return $xml;
+}
+
+function response($status,$status_message,$data)
+{
+	header("HTTP/1.1 ".$status);
+	
+	$endpoint = explode('/', $_SERVER['REQUEST_URI']);
+	
+	$response['status'] = $status;
+	$response['message'] = $status_message;
+	$response['data'] = $data;
+	
+	$json_response = json_encode($response, JSON_PRETTY_PRINT);
+	echo $json_response;
+}
+
+function gaurd_api(){
+    $api_key = $_SERVER['HTTP_AUTH'] ?? '';
+
+    if(empty($api_key)){
+	    response('401', "API Key is required", false);	
+	    exit();
+    }
+
+    if (strlen($api_key) < 32 or strlen($api_key) > 30) {
+        response('401', "Invalid API Key", false);	
+	    exit();
+    }
+
+    $check_key = Phoenix\Database\Database::$database->query("SELECT `value` FROM `settings` WHERE `key`='personal_key'"); 
+    $result = $check_key->fetch_assoc();
+    if(!$result['value'] !== $api_key){
+        response(401, "Invalid API key.", false);
+    }
+}
+
+function endpoint_active($endpoint){
+    $stmt = Phoenix\Database\Database::$database->prepare("SELECT `value` FROM `settings` WHERE `key`=? LIMIT 1"); 
+    $stmt->bind_param("s", $endpoint);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        if($row['value'] == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>
