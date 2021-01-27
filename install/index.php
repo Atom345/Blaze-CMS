@@ -186,7 +186,11 @@ INSERT INTO `settings` (`id`, `key`, `value`) VALUES
 (23, 'recaptcha_public_key', ''),
 (24, 'recaptcha_private_key', ''),
 (25, 'api_key', ''),
-(26, 'personal_key', 'Click the button below to generate a new key.');
+(26, 'personal_key', 'Click the button below to generate a new key.'),
+(27, 'test_api', '1'),
+(28, 'add_user_api', '1'),
+(29, 'remove_user_api', '1'),
+(30, 'website_details_api', '1');
 
 -- --------------------------------------------------------
 --

@@ -53,6 +53,28 @@
                         </div>
                       </div>
 
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Add User Endpoint</label>
+                           <select class="custom-select" name="add_user_api">
+                                    <option value="1" <?= $this->settings->add_user_api ? 'selected' : null ?>>Enabled</option>
+                                    <option value="0" <?= !$this->settings->add_user_api ? 'selected' : null ?>>Disabled</option>
+                            </select>
+							<small class="text-muted">Enable or disable this endpoint.</small>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Remove User Endpoint</label>
+                           <select class="custom-select" name="remove_user_api">
+                                    <option value="1" <?= $this->settings->remove_user_api ? 'selected' : null ?>>Enabled</option>
+                                    <option value="0" <?= !$this->settings->remove_user_api ? 'selected' : null ?>>Disabled</option>
+                            </select>
+							<small class="text-muted">Enable or disable this endpoint.</small>
+                        </div>
+                      </div>
+
                     </div>
                     <button type="submit" name = "save" class="btn btn-primary">Save</button>
                     <div class="clearfix"></div>

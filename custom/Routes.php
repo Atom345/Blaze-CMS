@@ -70,6 +70,14 @@ return $routes = [
         'adduser' => [
             'controller' => 'APIAddUser'
         ],
+
+        'removeuser' => [
+            'controller' => 'APIRemoveUser'
+        ],
+
+        'website' => [
+            'controller' => 'APIWebsiteDetails'
+        ],
     ],
 
     /* Admin Panel */

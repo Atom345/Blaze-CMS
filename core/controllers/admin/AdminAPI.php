@@ -48,7 +48,9 @@ class AdminAPI extends Controller
             if(empty($_SESSION['error'])) {
 
                 $settings_keys = [   
-                    'test_api'
+                    'test_api',
+                    'add_user_api',
+                    'remove_user_api'
                 ];
 
                 /* Go over each key and make sure to update it accordingly */

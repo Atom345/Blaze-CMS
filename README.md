@@ -50,7 +50,7 @@ Installing Phoenix is a breeze. Simply follow the steps below to install Phoenix
 
 ### Installation
 
-1. Download Phoenix PHP from here: [https://phoenix.ltda](here)
+1. Download Phoenix PHP from here: [https://phoenix.dropchat.net](here)
 2. Extract the Phoenix ZIP file to your root path or sub-folder.
 3. Visit the URL where you extracted Phoenix to. (https://example.com/ | https://subdomain.example.com)
 4. Follow the steps when the install wizard shows up.
@@ -75,12 +75,3 @@ Contributions are what make the open source community such an amazing place to b
 ## License 📜
 
 Phoenix CMS is distributed under the GNU General Public License v3.0 License. See `LICENSE` for more information.
-
-<!-- CONTACT -->
-## Contact 📬
-
-Email - admin@phoenix.ltda
-<br>
-Website - https://phoenix.ltda/contact
-<br>
-Project Link: - https://github.com/Atom345/Phoenix-PHP
