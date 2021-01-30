@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://phoenix.ltda">
+  <a href="https://phoenix.dropchat.net">
     <img src="https://cdn.discordapp.com/attachments/696883408168681482/793637431127703602/phoenix_1.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -11,7 +11,6 @@
     Bringing PHP back to life.
     <br />
     <br />
-    <a href="https://phoenix.ltda/demo">View Demo</a>
     ·
     <a href="https://github.com/AtomDev345/Phoenix-CMS/issues">Report Bug</a>
     ·

@@ -67,11 +67,11 @@ class AdminIndex extends Controller
 		 if($active_api_key == true){
             $phoenix_version = $this->settings->version;
             $update_package = 0;
-            $rc = @fsockopen("www.phoenix.ltda", 80, $errno, $errstr, 1);
+            $rc = @fsockopen("www.phoenix.dropchat.net", 80, $errno, $errstr, 1);
             if (is_resource($rc)) {
                 
-                $latest_version = file_get_contents("https://phoenix.ltda/updates/version.txt");
-                $url = "https://phoenix.ltda/api/update/" . $phoenix_version;
+                $latest_version = file_get_contents("https://phoenix.dropchat.net/updates/version.txt");
+                $url = "https://phoenix.dropchat.net/api/update/" . $phoenix_version;
                 
                 $update = read_api_output($url, 'GET', get_settings_from_key('api_key'));
                 
@@ -89,7 +89,7 @@ class AdminIndex extends Controller
                     $clean_next_version = preg_replace('/[.,]/', '', $update['data']);
     
                     /* Fetch update ZIP based on the valid next version */
-                    $source = 'https://phoenix.ltda/updates/phoenix-update' . $clean_next_version . '.zip';
+                    $source = 'https://phoenix.dropchat/updates/phoenix-update' . $clean_next_version . '.zip';
                     $package = 'phoenix-update' . $clean_next_version . '.zip';
     
                     if(Phoenix\FileHandler::remote_file_exists($source) == true){
